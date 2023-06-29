@@ -3,6 +3,7 @@ import { AppWindow } from "@phosphor-icons/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ElementType } from "react";
+
 import Surface from "./Surface";
 import { MOBILE_MENU_HEIGHT } from "@/constants";
 
@@ -10,7 +11,6 @@ interface MenuLinkProps {
   IconComponent: ElementType;
   title: string;
   href: string;
-  active?: boolean;
 }
 
 function MenuLink({ IconComponent, href, title }: MenuLinkProps) {

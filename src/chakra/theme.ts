@@ -9,23 +9,24 @@ const theme = extendTheme({
   config,
   colors: {
     bg: {
-      500: '#1a202c',
-      800: '#0e1625'
+      500: "#1a202c",
+      800: "#0e1625",
     },
     text: {
-      500: '#e2e2e2',
-      800: '#818181'
+      500: "#e2e2e2",
+      800: "#818181",
     },
     primary: {
-      500: '#ff8080'
-    }
+      300: "#ff9999",
+      500: "#ff8080",
+    },
   },
   styles: {
     global: {
       "html, body": {
         padding: 0,
         margin: 0,
-      }
+      },
     },
   },
 });
