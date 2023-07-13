@@ -4,13 +4,17 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { ElementType } from "react";
 
+import { MOBILE_MENU_HEIGHT } from "@/shared/constants";
 import Surface from "./Surface";
-import { MOBILE_MENU_HEIGHT } from "@/constants";
 
 interface MenuLinkProps {
   IconComponent: ElementType;
   title: string;
   href: string;
+}
+
+interface MobileBottomMenuProps {
+  open: boolean;
 }
 
 function MenuLink({ IconComponent, href, title }: MenuLinkProps) {
@@ -42,16 +46,17 @@ function MenuLink({ IconComponent, href, title }: MenuLinkProps) {
   );
 }
 
-function MobileBottomMenu() {
+function MobileBottomMenu({ open }: MobileBottomMenuProps) {
   return (
     <Surface
       display="flex"
       position="fixed"
       left="0px"
       bottom="0px"
-      transition="bottom .4s"
+      transform={`translateY(${open ? 0 : MOBILE_MENU_HEIGHT}px)`}
+      transition="transform .4s"
       px={4}
-      w="100vw"
+      w="100dvw"
       h={MOBILE_MENU_HEIGHT}
       justifyContent="space-around"
       role="navigation"
