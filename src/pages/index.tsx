@@ -1,6 +1,14 @@
-import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Image,
+  Spinner,
+  Text,
+} from "@chakra-ui/react";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import Page from "@/components/Page";
 import Surface from "@/components/Surface";
@@ -10,37 +18,46 @@ function Mobile() {
   const imgRef = useRef<HTMLImageElement>(null);
   const [imageHeight, setImageHeight] = useState<number>(0);
 
+  const updateImageHeight = () => {
+    if (!imgRef.current) return;
+    setImageHeight(imgRef.current.clientHeight);
+  };
+
   useEffect(() => {
-    function updateImageHeightOnResize() {
-      if (!imgRef.current) return;
-
-      setImageHeight(imgRef.current.height);
-    }
-
-    window.addEventListener("resize", updateImageHeightOnResize);
-    updateImageHeightOnResize();
-
-    return () => {
-      window.removeEventListener("resize", updateImageHeightOnResize);
-    };
+    window.addEventListener("resize", updateImageHeight);
+    return () => window.removeEventListener("resize", updateImageHeight);
   }, []);
+
+  useEffect(() => {
+    if (!imgRef.current) return;
+
+    imgRef.current.addEventListener("load", updateImageHeight);
+    return () => imgRef.current!.removeEventListener("load", updateImageHeight);
+  }, [imgRef]);
 
   return (
     <Box>
       <Surface
         p={6}
-        mt={imageHeight / 2 + "px"}
+        mt={12}
+        transform={`translateY(${imageHeight / 2}px)`}
+        transition="transform .4s"
         borderRadius="32px"
         position="relative"
       >
+        {!imgRef.current && (
+          <Flex justifyContent="center" mt={4}>
+            <Spinner />
+          </Flex>
+        )}
         <Image
+          visibility={imgRef.current ? "visible" : "hidden"}
           ref={imgRef}
           position="absolute"
-          top={-imageHeight / 2 + "px"}
+          transition="transform .4s"
+          transform="translate(-50%, -50%)"
           left="50%"
-          transform="translateX(-50%)"
-          w="90%"
-          maxW="400px"
+          w="min(80%, 400px)"
           borderRadius="48px"
           src="/pfp.jpg"
           alt="Me using a hoodie, with messy hair and looking to the right"
