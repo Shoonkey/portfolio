@@ -34,7 +34,7 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
       <Surface
         bg={mode === "quick-switch" ? "bg.500" : "bg.800"}
         borderRadius="16px"
-        borderTopRightRadius={mode === "quick-switch" ? "0px" : "16px"}
+        borderTopRightRadius={(mode === "quick-switch" && isActive) ? "0px" : "16px"}
         borderWidth="2px"
         borderStyle="solid"
         borderColor={isActive ? "primary.500" : "transparent"}
