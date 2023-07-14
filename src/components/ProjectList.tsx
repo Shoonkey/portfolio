@@ -24,10 +24,7 @@ function ProjectList({ selectedTags }: ProjectListProps) {
     <Flex flexDir="column" gap={4} px={4}>
       <AnimatePresence>
         {filteredProjects.length === 0 ? (
-          <Box
-            key="no-project"
-            textAlign="center"
-          >
+          <Box key="no-project" textAlign="center">
             <Heading as="h3" fontSize="24px" color="text.800">
               No tech selected, brain empty
             </Heading>
@@ -44,7 +41,7 @@ function ProjectList({ selectedTags }: ProjectListProps) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 16 }}
             >
-              <ProjectCard project={project} />
+              <ProjectCard project={project} mode="project-list" />
             </Box>
           ))
         )}
