@@ -1,6 +1,6 @@
 import { Flex, IconButton, Box, Switch, Text, Heading } from "@chakra-ui/react";
 import { X, MoonStars, SunHorizon } from "@phosphor-icons/react";
-import { ForwardedRef, RefObject, forwardRef } from "react";
+import { ForwardedRef, forwardRef } from "react";
 
 import projects from "@/shared/projects";
 import ProjectCard from "./ProjectCard";
@@ -79,7 +79,11 @@ function Sidebar(
         </Heading>
         <Flex>
           {projects.map((project) => (
-            <ProjectCard project={project} mode="quick-switch" />
+            <ProjectCard
+              key={project.id}
+              project={project}
+              mode="quick-switch"
+            />
           ))}
         </Flex>
       </Flex>
