@@ -15,8 +15,9 @@ function ProjectFilters({ selectedTags, onClickTech }: ProjectFiltersProps) {
       gridTemplateColumns={{ base: "repeat(2, 1fr)", sm: "repeat(3, 1fr)" }}
       gap={4}
     >
-      {techs.map((tech, index) => (
+      {techs.map((tech) => (
         <Surface
+          key={tech.tag}
           display="flex"
           flexDirection="column"
           gap={4}
