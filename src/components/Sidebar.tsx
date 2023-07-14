@@ -1,8 +1,9 @@
-import projects from "@/shared/projects";
 import { Flex, IconButton, Box, Switch, Text, Heading } from "@chakra-ui/react";
 import { X, MoonStars, SunHorizon } from "@phosphor-icons/react";
+import { ForwardedRef, RefObject, forwardRef } from "react";
+
+import projects from "@/shared/projects";
 import ProjectCard from "./ProjectCard";
-import { useRouter } from "next/router";
 
 interface SidebarProps {
   open: boolean;
@@ -11,16 +12,13 @@ interface SidebarProps {
   onToggleDarkMode: () => void;
 }
 
-function Sidebar({
-  open,
-  darkMode,
-  onClickClose,
-  onToggleDarkMode,
-}: SidebarProps) {
-  const router = useRouter();
-
+function Sidebar(
+  { open, darkMode, onClickClose, onToggleDarkMode }: SidebarProps,
+  ref: ForwardedRef<HTMLDivElement>
+) {
   return (
     <Flex
+      ref={ref}
       flexDir="column"
       position="relative"
       gap={4}
@@ -89,4 +87,4 @@ function Sidebar({
   );
 }
 
-export default Sidebar;
+export default forwardRef<HTMLDivElement, SidebarProps>(Sidebar);

@@ -1,12 +1,12 @@
 import { Flex, Box } from "@chakra-ui/react";
 import { ReactNode, useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
 
-import useIsMobile from "@/hooks/useIsMobile";
 import { MOBILE_MENU_HEIGHT } from "@/shared/constants";
+import useIsMobile from "@/hooks/useIsMobile";
 import MobileBottomMenu from "./MobileBottomMenu";
 import OpenSidebarButton from "./OpenSidebarButton";
 import Sidebar from "./Sidebar";
-import { useRouter } from "next/router";
 
 interface LayoutProps {
   children: ReactNode;
@@ -17,28 +17,32 @@ function Layout({ children }: LayoutProps) {
   const isMobile = useIsMobile();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
-  const content = useRef<HTMLDivElement>(null);
+
+  const mainContentRef = useRef<HTMLDivElement>(null);
+  const sidebarRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!content.current) return;
+    if (!mainContentRef.current || !sidebarRef.current) return;
 
-    content.current.scroll(sidebarOpen ? window.screen.availWidth : 0, 0);
-  }, [sidebarOpen, content]);
+    if (sidebarOpen) sidebarRef.current.scrollIntoView();
+    else mainContentRef.current.scrollIntoView();
+  }, [sidebarOpen, mainContentRef]);
 
   useEffect(() => {
     const closeMenu = () => setSidebarOpen(false);
 
     router.events.on("routeChangeStart", closeMenu);
-    
+
     return () => {
       router.events.off("routeChangeStart", closeMenu);
-    }
+    };
   }, [router]);
 
   return (
     <>
-      <Flex overflowX="hidden" scrollBehavior="smooth" ref={content}>
+      <Flex overflowX="hidden" scrollBehavior="smooth">
         <Box
+          ref={mainContentRef}
           position="relative"
           flexShrink={0}
           w="100dvw"
@@ -57,6 +61,7 @@ function Layout({ children }: LayoutProps) {
           {isMobile && <MobileBottomMenu open={!sidebarOpen} />}
         </Box>
         <Sidebar
+          ref={sidebarRef}
           open={sidebarOpen}
           darkMode={darkMode}
           onToggleDarkMode={() => setDarkMode(!darkMode)}
