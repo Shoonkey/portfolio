@@ -37,7 +37,7 @@ function Mobile() {
   }, [imgRef]);
 
   return (
-    <Box>
+    <Box pb={imageHeight / 2 + "px"}>
       <Surface
         p={6}
         mt={12}
