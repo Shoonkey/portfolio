@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 import { MOBILE_MENU_HEIGHT } from "@/shared/constants";
 import useIsMobile from "@/hooks/useIsMobile";
-import MobileBottomMenu from "./MobileBottomMenu";
+import MobileBottomMenu from "../mobile/MobileBottomMenu";
 import OpenSidebarButton from "./OpenSidebarButton";
 import Sidebar from "./Sidebar";
 
@@ -50,7 +50,7 @@ function Layout({ children }: LayoutProps) {
           overflowY={sidebarOpen ? "hidden" : "auto"}
           px="16px"
           pt="16px"
-          pb={MOBILE_MENU_HEIGHT + 16 + "px"}
+          pb={(isMobile ? MOBILE_MENU_HEIGHT : 0) + 16 + "px"}
           bg="bg.500"
         >
           {children}

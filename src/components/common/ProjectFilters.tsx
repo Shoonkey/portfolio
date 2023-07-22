@@ -1,8 +1,8 @@
-import { Flex, Grid, Heading, Image } from "@chakra-ui/react";
+import { Flex, Grid, Heading } from "@chakra-ui/react";
 
-import techs from "../shared/techs";
-import Surface from "./Surface";
+import techs from "@/shared/techs";
 import TechLogo from "./TechLogo";
+import Surface from "./Surface";
 
 interface ProjectFiltersProps {
   selectedTags: string[];

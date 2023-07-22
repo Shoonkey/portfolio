@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { ElementType } from "react";
 
 import { MOBILE_MENU_HEIGHT } from "@/shared/constants";
-import Surface from "./Surface";
+import Surface from "../common/Surface";
 
 interface MenuLinkProps {
   IconComponent: ElementType;
