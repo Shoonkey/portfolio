@@ -31,8 +31,9 @@ function Mobile() {
   useEffect(() => {
     if (!imgRef.current) return;
 
-    imgRef.current.addEventListener("load", updateImageHeight);
-    return () => imgRef.current!.removeEventListener("load", updateImageHeight);
+    const image = imgRef.current;
+    image.addEventListener("load", updateImageHeight);
+    return () => image.removeEventListener("load", updateImageHeight);
   }, [imgRef]);
 
   return (
