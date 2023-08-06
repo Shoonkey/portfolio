@@ -21,7 +21,7 @@ function ProjectsPage() {
   return (
     <Page title="Projects">
       <Box>
-        <Flex flexDir="column" gap={6}>
+        <Flex flexDir="column" gap={6} maxW="800px" mx="auto">
           <Heading as="h1" textAlign="center" color="text.800">
             Filter by tech
           </Heading>

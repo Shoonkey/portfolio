@@ -18,8 +18,7 @@ function ContactInfoCard({ icon, title, description }: ContactInfoCardProps) {
       flexDir="column"
       alignItems="center"
       borderRadius="16px"
-      maxW="400px"
-      mx="auto"
+      w="100%"
     >
       <Box color="primary.500">{icon}</Box>
       <Heading as="h2" fontSize="md" color="text.500">

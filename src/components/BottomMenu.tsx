@@ -22,7 +22,7 @@ function MenuLink({ IconComponent, href, title }: MenuLinkProps) {
   const isActive = router.pathname === href;
 
   return (
-    <Flex flexGrow={1} justifyContent="center" alignItems="center">
+    <Flex flexGrow={{ base: 1, md: 0 }} flexBasis="120px" justifyContent="center" alignItems="center">
       <Flex
         as={Link}
         href={href}
@@ -58,7 +58,7 @@ function BottomMenu({ open }: BottomMenuProps) {
       px={4}
       w="100dvw"
       h={BOTTOM_MENU_HEIGHT}
-      justifyContent="space-around"
+      justifyContent={{ base: "space-around", md: "center" }}
       role="navigation"
       aria-label="Main"
       bg="bg.800"

@@ -6,9 +6,9 @@ import {
   Image,
   Button,
   Heading,
-  Link,
   Text,
 } from "@chakra-ui/react";
+import Link from "next/link";
 
 import Surface from "@/components/Surface";
 import Page from "@/components/Page";
