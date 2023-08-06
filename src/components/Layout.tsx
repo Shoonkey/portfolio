@@ -2,9 +2,8 @@ import { Flex, Box } from "@chakra-ui/react";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 
-import { MOBILE_MENU_HEIGHT } from "@/shared/constants";
-import useIsMobile from "@/hooks/useIsMobile";
-import MobileBottomMenu from "../mobile/MobileBottomMenu";
+import { BOTTOM_MENU_HEIGHT } from "@/shared/constants";
+import BottomMenu from "./BottomMenu";
 import OpenSidebarButton from "./OpenSidebarButton";
 import Sidebar from "./Sidebar";
 
@@ -14,7 +13,6 @@ interface LayoutProps {
 
 function Layout({ children }: LayoutProps) {
   const router = useRouter();
-  const isMobile = useIsMobile();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
 
@@ -50,7 +48,7 @@ function Layout({ children }: LayoutProps) {
           overflowY={sidebarOpen ? "hidden" : "auto"}
           px="16px"
           pt="16px"
-          pb={(isMobile ? MOBILE_MENU_HEIGHT : 0) + 16 + "px"}
+          pb={BOTTOM_MENU_HEIGHT + 16 + "px"}
           bg="bg.500"
         >
           {children}
@@ -58,7 +56,7 @@ function Layout({ children }: LayoutProps) {
             isSidebarOpen={sidebarOpen}
             onClick={() => setSidebarOpen(true)}
           />
-          {isMobile && <MobileBottomMenu open={!sidebarOpen} />}
+          <BottomMenu open={!sidebarOpen} />
         </Box>
         <Sidebar
           ref={sidebarRef}

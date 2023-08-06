@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { ElementType } from "react";
 
-import { MOBILE_MENU_HEIGHT } from "@/shared/constants";
-import Surface from "../common/Surface";
+import { BOTTOM_MENU_HEIGHT } from "@/shared/constants";
+import Surface from "./Surface";
 
 interface MenuLinkProps {
   IconComponent: ElementType;
@@ -13,7 +13,7 @@ interface MenuLinkProps {
   href: string;
 }
 
-interface MobileBottomMenuProps {
+interface BottomMenuProps {
   open: boolean;
 }
 
@@ -46,18 +46,18 @@ function MenuLink({ IconComponent, href, title }: MenuLinkProps) {
   );
 }
 
-function MobileBottomMenu({ open }: MobileBottomMenuProps) {
+function BottomMenu({ open }: BottomMenuProps) {
   return (
     <Surface
       display="flex"
       position="fixed"
       left="0px"
       bottom="0px"
-      transform={`translateY(${open ? 0 : MOBILE_MENU_HEIGHT}px)`}
+      transform={`translateY(${open ? 0 : BOTTOM_MENU_HEIGHT}px)`}
       transition="transform .4s"
       px={4}
       w="100dvw"
-      h={MOBILE_MENU_HEIGHT}
+      h={BOTTOM_MENU_HEIGHT}
       justifyContent="space-around"
       role="navigation"
       aria-label="Main"
@@ -82,4 +82,4 @@ function MobileBottomMenu({ open }: MobileBottomMenuProps) {
   );
 }
 
-export default MobileBottomMenu;
+export default BottomMenu;
