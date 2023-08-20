@@ -20,19 +20,14 @@ function Homepage() {
   const updateImageHeight = () => {
     if (!imgRef.current) return;
     setImageHeight(imgRef.current.clientHeight);
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", updateImageHeight);
-    return () => window.removeEventListener("resize", updateImageHeight);
-  }, []);
+  }
 
   useEffect(() => {
     if (!imgRef.current) return;
 
-    const image = imgRef.current;
-    image.addEventListener("load", updateImageHeight);
-    return () => image.removeEventListener("load", updateImageHeight);
+    updateImageHeight()
+    window.addEventListener("resize", updateImageHeight);
+    return () => window.removeEventListener("resize", updateImageHeight);
   }, [imgRef]);
 
   return (
@@ -48,13 +43,13 @@ function Homepage() {
           borderRadius="32px"
           position="relative"
         >
-          {!imgRef.current && (
+          {imageHeight === 0 && (
             <Flex justifyContent="center" mt={4}>
               <Spinner />
             </Flex>
           )}
           <Image
-            visibility={imgRef.current ? "visible" : "hidden"}
+            visibility={imageHeight !== 0 ? "visible" : "hidden"}
             ref={imgRef}
             position="absolute"
             transition="transform .4s"
