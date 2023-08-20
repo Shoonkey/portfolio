@@ -39,7 +39,8 @@ function Layout({ children }: LayoutProps) {
   return (
     <>
       <Flex overflowX="hidden" scrollBehavior="smooth">
-        <Box
+        <Flex
+          flexDir="column"
           ref={mainContentRef}
           position="relative"
           flexShrink={0}
@@ -57,7 +58,7 @@ function Layout({ children }: LayoutProps) {
             onClick={() => setSidebarOpen(true)}
           />
           <BottomMenu open={!sidebarOpen} />
-        </Box>
+        </Flex>
         <Sidebar
           ref={sidebarRef}
           open={sidebarOpen}

@@ -12,12 +12,12 @@ import ContactInfoCard from "@/components/ContactInfoCard";
 function ContactPage() {
   return (
     <Page title="Contact">
-      <Flex flexDir="column" color="text.800">
+      <Flex flexDir="column" color="text.800" flexGrow={1}>
         <Heading
           as="h1"
-          fontSize="md"
+          size="md"
           textAlign="center"
-          maxW="200px"
+          maxW={{ base: "200px", md: "none" }}
           mx="auto"
           mb={8}
         >
@@ -25,9 +25,12 @@ function ContactPage() {
           you may find me through
         </Heading>
         <Grid
+          flexGrow={1}
           justifyItems="center"
           gap={4}
           gridTemplateColumns={{ base: "1fr", md: "1fr 1fr" }}
+          maxW="800px"
+          mx="auto"
         >
           <ContactInfoCard
             icon={<EnvelopeOpen size={64} />}

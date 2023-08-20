@@ -16,9 +16,12 @@ function ContactInfoCard({ icon, title, description }: ContactInfoCardProps) {
       px={8}
       display="flex"
       flexDir="column"
+      justifyContent="center"
       alignItems="center"
       borderRadius="16px"
       w="100%"
+      transition="transform .4s"
+      _hover={{ transform: "scale(0.97)" }}
     >
       <Box color="primary.500">{icon}</Box>
       <Heading as="h2" fontSize="md" color="text.500">

@@ -49,10 +49,9 @@ function ProjectList({ selectedTags }: ProjectListProps) {
             <Grid
               key={project.id}
               gap={4}
-              gridTemplateColumns={{ base: "1fr", md: "1fr 1fr" }}
+              gridTemplateColumns={{ base: "1fr", md: "1fr 1fr", lg: "1fr 1fr 1fr" }}
             >
               <Box
-                flexBasis="33%"
                 as={motion.div}
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
