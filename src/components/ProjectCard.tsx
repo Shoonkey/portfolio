@@ -65,7 +65,7 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
                   <TechLogo tagName="next" h="32px" />
                 )}
               </Flex>
-              <a href={project.githubLink} target="_blank">
+              <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
                 <Image
                   w="32px"
                   src="/github-mark.svg"
