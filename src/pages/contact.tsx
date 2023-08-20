@@ -1,18 +1,10 @@
-import Link from "next/link";
 import {
   Code,
   EnvelopeOpen,
   GithubLogo,
   LinkedinLogo,
 } from "@phosphor-icons/react";
-import {
-  Flex,
-  Grid,
-  Heading,
-  ListItem,
-  Text,
-  UnorderedList,
-} from "@chakra-ui/react";
+import { Link, Flex, Grid, Heading, Text } from "@chakra-ui/react";
 
 import Page from "@/components/Page";
 import ContactInfoCard from "@/components/ContactInfoCard";
@@ -89,7 +81,7 @@ function ContactPage() {
                     textDecoration="underline"
                     color="primary.500"
                   >
-                    <Link href="https://github.com/Shoonkey" target="_blank">
+                    <Link href="https://github.com/Shoonkey" target="_blank" rel="noopener noreferrer">
                       Github
                     </Link>
                   </Text>
@@ -117,7 +109,7 @@ function ContactPage() {
                     textDecoration="underline"
                     color="primary.500"
                   >
-                    <Link href="https://twitter.com/shooonkey" target="_blank">
+                    <Link href="https://twitter.com/shooonkey" target="_blank" rel="noopener noreferrer">
                       LinkedIn
                     </Link>
                   </Text>
@@ -132,18 +124,51 @@ function ContactPage() {
           />
           <ContactInfoCard
             icon={<Code size={64} />}
-            title="Coding problems platforms"
+            title="Coding platforms"
             description={
-              <>
-                <Text>I like practicing programming with problems!</Text>
-                <UnorderedList>
-                  <ListItem>Beecrowd</ListItem>
-                  <ListItem>LeetCode</ListItem>
-                  <ListItem>HackerRank</ListItem>
-                  <ListItem>HackerEarth</ListItem>
-                  <ListItem>CodinGame</ListItem>
-                </UnorderedList>
-              </>
+              <Flex flexDir="column" gap={4}>
+                <Text>
+                  I like practicing programming around the internet! I've
+                  started my journey in Beecrowd (when it was still URI Online
+                  Judge!) and usually am on Beecrowd, LeetCode or HackerRank
+                  these days!
+                </Text>
+                <Flex flexWrap="wrap" gap={4} justifyContent="center">
+                  {[
+                    {
+                      name: "Beecrowd",
+                      href: "https://www.beecrowd.com.br/judge/en/profile/55099",
+                    },
+                    {
+                      name: "LeetCode",
+                      href: "https://leetcode.com/Shoonkey/",
+                    },
+                    {
+                      name: "HackerRank",
+                      href: "https://www.hackerrank.com/Shoonkey",
+                    },
+                    {
+                      name: "HackerEarth",
+                      href: "https://www.hackerearth.com/@Shoonkey",
+                    },
+                    {
+                      name: "CodinGame",
+                      href: "https://www.codingame.com/profile/1c7ebfd0d5454fdfd338d7eb0945b8be6640131",
+                    },
+                  ].map((platform) => (
+                    <Link
+                      key={platform.name}
+                      href={platform.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      textDecoration="underline"
+                      color="primary.300"
+                    >
+                      {platform.name}
+                    </Link>
+                  ))}
+                </Flex>
+              </Flex>
             }
           />
         </Grid>
