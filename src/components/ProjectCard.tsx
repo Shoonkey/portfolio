@@ -67,7 +67,7 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
               </Flex>
               <a href={project.githubLink} target="_blank">
                 <Image
-                  w="48px"
+                  w="32px"
                   src="/github-mark.svg"
                   alt="Github logo, Invertocat: a little cat in the middle of a circle, tail pointing left"
                   _hover={{ filter: "grayscale(.4)" }}

@@ -1,12 +1,15 @@
-import { Box, Flex, Heading } from "@chakra-ui/react";
+import { Divider, Flex, Heading } from "@chakra-ui/react";
 import { useState } from "react";
 
 import Page from "@/components/Page";
 import ProjectFilters from "@/components/ProjectFilters";
 import ProjectList from "@/components/ProjectList";
+import techs from "@/shared/techs";
 
 function ProjectsPage() {
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [selectedTags, setSelectedTags] = useState<string[]>(
+    techs.map((t) => t.tag)
+  );
 
   const toggleTag = (techTag: string) => {
     const techIdx = selectedTags.indexOf(techTag);
@@ -20,20 +23,19 @@ function ProjectsPage() {
 
   return (
     <Page title="Projects">
-      <Box>
+      <Flex mt={2} flexDir="column" gap={6}>
+        <Heading as="h1" textAlign="center" color="primary.500">
+          Projects
+        </Heading>
         <Flex flexDir="column" gap={6} maxW="800px" mx="auto">
-          <Heading as="h1" textAlign="center" color="text.800">
-            Filter by tech
+          <Heading as="h2" size="md" textAlign="center" color="text.800">
+            Filter by tech:
           </Heading>
           <ProjectFilters selectedTags={selectedTags} onClickTech={toggleTag} />
         </Flex>
-        <Flex mt={8} flexDir="column" gap={6}>
-          <Heading as="h1" textAlign="center" color="text.800">
-            Projects
-          </Heading>
-          <ProjectList selectedTags={selectedTags} />
-        </Flex>
-      </Box>
+        <Divider />
+        <ProjectList selectedTags={selectedTags} />
+      </Flex>
     </Page>
   );
 }

@@ -1,4 +1,4 @@
-import { Flex, Grid, Heading } from "@chakra-ui/react";
+import { Grid, Flex, Heading } from "@chakra-ui/react";
 
 import techs from "@/shared/techs";
 import TechLogo from "./TechLogo";
@@ -12,7 +12,7 @@ interface ProjectFiltersProps {
 function ProjectFilters({ selectedTags, onClickTech }: ProjectFiltersProps) {
   return (
     <Grid
-      gridTemplateColumns={{ base: "repeat(2, 1fr)", sm: "repeat(3, 1fr)" }}
+      gridTemplateColumns="repeat(3, 1fr)"
       gap={4}
     >
       {techs.map((tech) => (
@@ -22,8 +22,7 @@ function ProjectFilters({ selectedTags, onClickTech }: ProjectFiltersProps) {
           flexDirection="column"
           gap={4}
           borderRadius="16px"
-          px={6}
-          py={6}
+          p={4}
           borderStyle="solid"
           borderWidth="2px"
           borderColor={
@@ -33,10 +32,10 @@ function ProjectFilters({ selectedTags, onClickTech }: ProjectFiltersProps) {
           onClick={() => onClickTech(tech.tag)}
           _hover={{ cursor: "pointer" }}
         >
-          <Flex h="64px" justifyContent="center" alignItems="center">
+          <Flex h="48px" justifyContent="center" alignItems="center">
             <TechLogo tagName={tech.tag} h="100%" />
           </Flex>
-          <Heading textAlign="center" as="h2">
+          <Heading textAlign="center" as="h2" size="sm">
             {tech.name}
           </Heading>
         </Surface>
