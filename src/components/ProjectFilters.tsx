@@ -3,6 +3,7 @@ import { Grid, Flex, Heading } from "@chakra-ui/react";
 import techs from "@/shared/techs";
 import TechLogo from "./TechLogo";
 import Surface from "./Surface";
+import useThemeColor from "@/hooks/useThemeColor";
 
 interface ProjectFiltersProps {
   selectedTags: string[];
@@ -10,11 +11,10 @@ interface ProjectFiltersProps {
 }
 
 function ProjectFilters({ selectedTags, onClickTech }: ProjectFiltersProps) {
+  const highlightColor = useThemeColor("primary.500");
+
   return (
-    <Grid
-      gridTemplateColumns="repeat(3, 1fr)"
-      gap={4}
-    >
+    <Grid gridTemplateColumns="repeat(3, 1fr)" gap={4}>
       {techs.map((tech) => (
         <Surface
           key={tech.tag}
@@ -26,7 +26,7 @@ function ProjectFilters({ selectedTags, onClickTech }: ProjectFiltersProps) {
           borderStyle="solid"
           borderWidth="2px"
           borderColor={
-            selectedTags.includes(tech.tag) ? "primary.500" : "transparent"
+            selectedTags.includes(tech.tag) ? highlightColor : "transparent"
           }
           boxSizing="border-box"
           onClick={() => onClickTech(tech.tag)}

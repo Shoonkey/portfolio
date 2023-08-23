@@ -8,11 +8,16 @@ import { Link, Flex, Grid, Heading, Text } from "@chakra-ui/react";
 
 import Page from "@/components/Page";
 import ContactInfoCard from "@/components/ContactInfoCard";
+import useThemeColor from "@/hooks/useThemeColor";
 
 function ContactPage() {
+  const standardHighlightColor = useThemeColor("primary.500");
+  const alternateHighlightColor = useThemeColor("primary.300");
+  const standardColor = useThemeColor("text.800");
+
   return (
     <Page title="Contact">
-      <Flex flexDir="column" color="text.800" flexGrow={1}>
+      <Flex flexDir="column" color={standardColor} flexGrow={1}>
         <Heading
           as="h1"
           size="md"
@@ -41,7 +46,7 @@ function ContactPage() {
                   <Text
                     as="span"
                     textDecoration="underline"
-                    color="primary.500"
+                    color={standardHighlightColor}
                   >
                     <Link href="mailto:shoonkey.dev@gmail.com">
                       Drop me an email.
@@ -52,7 +57,7 @@ function ContactPage() {
                 <Text>
                   It could go like <br />
                   {'"'}
-                  <Text as="span" color="primary.500">
+                  <Text as="span" color={standardHighlightColor}>
                     Hey there! Your portfolio design looks cool, good job!
                   </Text>
                   {'"'}
@@ -63,7 +68,7 @@ function ContactPage() {
                 <Text>
                   I'd be like <br />
                   {'"'}
-                  <Text as="span" color="primary.500">
+                  <Text as="span" color={standardHighlightColor}>
                     Oh, thanks. I'm glad you think so. I'm pretty proud of it
                     myself!
                   </Text>
@@ -82,7 +87,7 @@ function ContactPage() {
                   <Text
                     as="span"
                     textDecoration="underline"
-                    color="primary.500"
+                    color={standardHighlightColor}
                   >
                     <Link href="https://github.com/Shoonkey" target="_blank" rel="noopener noreferrer">
                       Github
@@ -110,7 +115,7 @@ function ContactPage() {
                   <Text
                     as="span"
                     textDecoration="underline"
-                    color="primary.500"
+                    color={standardHighlightColor}
                   >
                     <Link href="https://twitter.com/shooonkey" target="_blank" rel="noopener noreferrer">
                       LinkedIn
@@ -165,7 +170,7 @@ function ContactPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       textDecoration="underline"
-                      color="primary.300"
+                      color={alternateHighlightColor}
                     >
                       {platform.name}
                     </Link>

@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { ElementType } from "react";
 
 import { BOTTOM_MENU_HEIGHT } from "@/shared/constants";
+import useThemeColor from "@/hooks/useThemeColor";
 import Surface from "./Surface";
 
 interface MenuLinkProps {
@@ -18,24 +19,31 @@ interface BottomMenuProps {
 }
 
 function MenuLink({ IconComponent, href, title }: MenuLinkProps) {
+  const highlightColor = useThemeColor("primary.500");
+
   const router = useRouter();
   const isActive = router.pathname === href;
 
   return (
-    <Flex flexGrow={{ base: 1, md: 0 }} flexBasis="120px" justifyContent="center" alignItems="center">
+    <Flex
+      flexGrow={{ base: 1, md: 0 }}
+      flexBasis="120px"
+      justifyContent="center"
+      alignItems="center"
+    >
       <Flex
         as={Link}
         href={href}
         flexDir="column"
         borderWidth="3px"
-        borderColor={isActive ? "primary.500" : "transparent"}
+        borderColor={isActive ? highlightColor : "transparent"}
         borderStyle="solid"
         borderRadius="12px"
         justifyContent="center"
         alignItems="center"
         w="90%"
         h="80%"
-        _hover={{ borderColor: "primary.500" }}
+        _hover={{ borderColor: highlightColor }}
       >
         <IconComponent />
         <Heading as="h1" fontSize="lg">
@@ -61,7 +69,6 @@ function BottomMenu({ open }: BottomMenuProps) {
       justifyContent={{ base: "space-around", md: "center" }}
       role="navigation"
       aria-label="Main"
-      bg="bg.800"
     >
       <MenuLink
         title="Intro"

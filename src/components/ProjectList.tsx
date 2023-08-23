@@ -10,12 +10,16 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import projects from "@/shared/projects";
 import ProjectCard from "./ProjectCard";
+import useThemeColor from "@/hooks/useThemeColor";
 
 interface ProjectListProps {
   selectedTags: string[];
 }
 
 function ProjectList({ selectedTags }: ProjectListProps) {
+  const noTechsColor = useThemeColor("text.800");
+  const highlightColor = useThemeColor("primary.300");
+
   const filteredProjects = [];
 
   for (let i = 0; i < projects.length; i++) {
@@ -31,11 +35,16 @@ function ProjectList({ selectedTags }: ProjectListProps) {
     <Box px={4} flexGrow={1}>
       <AnimatePresence>
         {filteredProjects.length === 0 ? (
-          <Flex flexDir="column" gap={2} textAlign="center" aria-label="Results">
-            <Heading as="h3" size="md" color="text.800">
+          <Flex
+            flexDir="column"
+            gap={2}
+            textAlign="center"
+            aria-label="Results"
+          >
+            <Heading as="h3" size="md" color={noTechsColor}>
               No tech selected, brain empty
             </Heading>
-            <Heading as="h3" size="2xl" color="primary.300">
+            <Heading as="h3" size="2xl" color={highlightColor}>
               <Text as="span" aria-hidden="true">
                 {"(╭ರ_⊙)"}
               </Text>
@@ -49,7 +58,11 @@ function ProjectList({ selectedTags }: ProjectListProps) {
             <Grid
               key={project.id}
               gap={4}
-              gridTemplateColumns={{ base: "1fr", md: "1fr 1fr", lg: "1fr 1fr 1fr" }}
+              gridTemplateColumns={{
+                base: "1fr",
+                md: "1fr 1fr",
+                lg: "1fr 1fr 1fr",
+              }}
             >
               <Box
                 as={motion.div}

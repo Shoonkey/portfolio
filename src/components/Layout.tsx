@@ -1,4 +1,4 @@
-import { Flex, Box } from "@chakra-ui/react";
+import { Flex, useColorModeValue } from "@chakra-ui/react";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 
@@ -14,7 +14,7 @@ interface LayoutProps {
 function Layout({ children }: LayoutProps) {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(true);
+  const bgColor = useColorModeValue("bgLight.500", "bgDark.500")
 
   const mainContentRef = useRef<HTMLDivElement>(null);
   const sidebarRef = useRef<HTMLDivElement>(null);
@@ -62,8 +62,6 @@ function Layout({ children }: LayoutProps) {
         <Sidebar
           ref={sidebarRef}
           open={sidebarOpen}
-          darkMode={darkMode}
-          onToggleDarkMode={() => setDarkMode(!darkMode)}
           onClickClose={() => setSidebarOpen(false)}
         />
       </Flex>

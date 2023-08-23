@@ -5,8 +5,12 @@ import Page from "@/components/Page";
 import ProjectFilters from "@/components/ProjectFilters";
 import ProjectList from "@/components/ProjectList";
 import techs from "@/shared/techs";
+import useThemeColor from "@/hooks/useThemeColor";
 
 function ProjectsPage() {
+  const highlightColor = useThemeColor("primary.500");
+  const textColor = useThemeColor("text.800");
+
   const [selectedTags, setSelectedTags] = useState<string[]>(
     techs.map((t) => t.tag)
   );
@@ -24,11 +28,11 @@ function ProjectsPage() {
   return (
     <Page title="Projects">
       <Flex mt={2} flexDir="column" gap={6}>
-        <Heading as="h1" textAlign="center" color="primary.500">
+        <Heading as="h1" textAlign="center" color={highlightColor}>
           Projects
         </Heading>
         <Flex flexDir="column" gap={6} maxW="800px" mx="auto">
-          <Heading as="h2" size="md" textAlign="center" color="text.800">
+          <Heading as="h2" size="md" textAlign="center" color={textColor}>
             Filter by tech:
           </Heading>
           <ProjectFilters selectedTags={selectedTags} onClickTech={toggleTag} />

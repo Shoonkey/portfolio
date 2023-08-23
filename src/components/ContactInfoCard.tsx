@@ -2,6 +2,7 @@ import { Box, Heading } from "@chakra-ui/react";
 import { ReactNode } from "react";
 
 import Surface from "./Surface";
+import useThemeColor from "@/hooks/useThemeColor";
 
 interface ContactInfoCardProps {
   icon: ReactNode;
@@ -10,6 +11,9 @@ interface ContactInfoCardProps {
 }
 
 function ContactInfoCard({ icon, title, description }: ContactInfoCardProps) {
+  const iconColor = useThemeColor("primary.500");
+  const textColor = useThemeColor("text.500");
+
   return (
     <Surface
       py={4}
@@ -23,8 +27,8 @@ function ContactInfoCard({ icon, title, description }: ContactInfoCardProps) {
       transition="transform .4s"
       _hover={{ transform: "scale(0.97)" }}
     >
-      <Box color="primary.500">{icon}</Box>
-      <Heading as="h2" fontSize="md" color="text.500">
+      <Box color={iconColor}>{icon}</Box>
+      <Heading as="h2" fontSize="md" color={textColor}>
         {title}
       </Heading>
       <Box textAlign="center" fontSize="sm" mt={2} lineHeight="1.5rem">

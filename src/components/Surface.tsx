@@ -1,8 +1,21 @@
 import { Box, BoxProps } from "@chakra-ui/react";
 import { ForwardedRef, forwardRef } from "react";
 
-function Surface(props: BoxProps, ref: ForwardedRef<HTMLDivElement>) {
-  return <Box ref={ref} bg="bg.800" {...props} />;
+import useThemeColor from "@/hooks/useThemeColor";
+
+function Surface(
+  { bg, transition, ...props }: BoxProps,
+  ref: ForwardedRef<HTMLDivElement>
+) {
+  const bgColor = useThemeColor("bg.800");
+  return (
+    <Box
+      {...props}
+      ref={ref}
+      bg={bg || bgColor}
+      transition={`background .2s, ${transition}`}
+    />
+  );
 }
 
 export default forwardRef<HTMLDivElement, BoxProps>(Surface);

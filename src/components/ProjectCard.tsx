@@ -1,10 +1,11 @@
-import { Box, Flex, Heading, Image } from "@chakra-ui/react";
+import { Box, Flex, Heading, Image, useColorModeValue } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 import Surface from "./Surface";
 import TechLogo from "./TechLogo";
 import { Project } from "@/shared/projects";
+import useThemeColor from "@/hooks/useThemeColor";
 
 interface ProjectCardProps {
   project: Project;
@@ -16,29 +17,36 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
 
   const isActive = router.pathname.startsWith(project.href);
 
+  const standardBgColor = useThemeColor("bg.800");
+  const quickSwitchBgColor = useThemeColor("bg.500");
+  const highlightColor = useThemeColor("primary.500");
+  const standardBorderColor = useThemeColor("text.800")
+
   return (
     <Flex flexDir="column" alignItems="end">
       {mode === "quick-switch" && isActive && (
         <Heading
           px={2}
           pt={2}
-          color="bg.800"
+          color={standardBgColor}
           as="h2"
           size="md"
-          bg="primary.500"
+          bg={highlightColor}
           textTransform="uppercase"
         >
           You're here
         </Heading>
       )}
       <Surface
-        bg={mode === "quick-switch" ? "bg.500" : "bg.800"}
+        bg={mode === "quick-switch" ? quickSwitchBgColor : standardBgColor}
         borderRadius="16px"
-        borderTopRightRadius={(mode === "quick-switch" && isActive) ? "0px" : "16px"}
+        borderTopRightRadius={
+          mode === "quick-switch" && isActive ? "0px" : "16px"
+        }
         borderWidth="2px"
         borderStyle="solid"
-        borderColor={isActive ? "primary.500" : "transparent"}
-        _hover={{ cursor: "pointer", borderColor: "primary.500" }}
+        borderColor={isActive ? highlightColor : standardBorderColor}
+        _hover={{ cursor: "pointer", borderColor: highlightColor }}
         onClick={() => {
           if (!isActive) router.push(project.href);
         }}
@@ -65,7 +73,11 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
                   <TechLogo tagName="next" h="32px" />
                 )}
               </Flex>
-              <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
+              <a
+                href={project.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Image
                   w="32px"
                   src="/github-mark.svg"

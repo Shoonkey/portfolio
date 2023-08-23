@@ -12,8 +12,12 @@ import Link from "next/link";
 
 import Surface from "@/components/Surface";
 import Page from "@/components/Page";
+import useThemeColor from "@/hooks/useThemeColor";
 
 function Homepage() {
+  const highlightColor = useThemeColor("primary.500");
+  const hoveredColor = useThemeColor("primary.300");
+
   const imgRef = useRef<HTMLImageElement>(null);
   const [imageHeight, setImageHeight] = useState<number>(0);
 
@@ -70,7 +74,7 @@ function Homepage() {
               </Heading>
               <Heading as="h1" fontSize={32}>
                 I'm{" "}
-                <Text as="span" color="primary.500">
+                <Text as="span" color={highlightColor}>
                   Richard
                 </Text>
                 .
@@ -79,7 +83,7 @@ function Homepage() {
             <Flex textAlign="center" flexDir="column" my={6} gap={4}>
               <Heading as="h1" fontSize={24} lineHeight="36px">
                 I'm a{" "}
-                <Text as="span" color="primary.500">
+                <Text as="span" color={highlightColor}>
                   software developer
                 </Text>{" "}
                 with around 3 years of experience with Node, React, Vue and
@@ -89,8 +93,8 @@ function Homepage() {
                 as={Link}
                 href="/projects"
                 alignSelf="center"
-                bg="primary.500"
-                _hover={{ bg: "primary.300" }}
+                bg={highlightColor}
+                _hover={{ bg: hoveredColor }}
                 color="black"
               >
                 Show me the projects
