@@ -6,6 +6,7 @@ import Surface from "./Surface";
 import TechLogo from "./TechLogo";
 import { Project } from "@/shared/projects";
 import useThemeColor from "@/hooks/useThemeColor";
+import { useTranslation } from "react-i18next";
 
 interface ProjectCardProps {
   project: Project;
@@ -14,6 +15,7 @@ interface ProjectCardProps {
 
 function ProjectCard({ project, mode }: ProjectCardProps) {
   const router = useRouter();
+  const { t } = useTranslation();
 
   const isActive = router.pathname.startsWith(project.href);
 
@@ -34,7 +36,7 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
           bg={highlightColor}
           textTransform="uppercase"
         >
-          You're here
+          {t("quickSwitch.youreHere")}
         </Heading>
       )}
       <Surface
@@ -68,7 +70,7 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
             <Flex justifyContent="space-between" alignItems="center">
               <Flex gap={4}>
                 {project.tags.map((tag) => (
-                  <TechLogo tagName={tag} />
+                  <TechLogo key={tag} tagName={tag} />
                 ))}
               </Flex>
               <a

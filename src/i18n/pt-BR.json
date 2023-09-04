@@ -1,0 +1,17 @@
+{
+  "themeName": {
+    "dark": "escuro",
+    "light": "claro"
+  },
+  "sidebar": {
+    "closeButtonLabel": "Fechar configurações",
+    "changeThemeButtonLabel": "Mudar para o modo {{theme}}",
+    "theme": "Tema",
+    "language": "Linguagem"
+  },
+  "quickSwitch": {
+    "title": "Troca rápida",
+    "description": "Sinta-se livre para trocar de página por aqui!",
+    "youreHere": "Você está aquí"
+  }
+}

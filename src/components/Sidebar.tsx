@@ -5,9 +5,12 @@ import {
   useColorMode,
   Tooltip,
   Text,
+  Select,
+  Divider,
 } from "@chakra-ui/react";
 import { X, MoonStars, SunHorizon } from "@phosphor-icons/react";
 import { ForwardedRef, forwardRef } from "react";
+import { useTranslation } from "react-i18next";
 
 import projects from "@/shared/projects";
 import useThemeColor from "@/hooks/useThemeColor";
@@ -23,6 +26,8 @@ function Sidebar(
   { open, onClickClose }: SidebarProps,
   ref: ForwardedRef<HTMLDivElement>
 ) {
+  const { t, i18n } = useTranslation();
+
   const { colorMode, toggleColorMode } = useColorMode();
   const highlightColor = useThemeColor("primary.500");
   const textColor = useThemeColor("text.800");
@@ -41,41 +46,50 @@ function Sidebar(
       overflowY="auto"
     >
       <Flex justifyContent="space-between">
-        <Tooltip label="Close settings" placement="left">
+        <Tooltip label={t("sidebar.closeButtonLabel")} placement="left">
           <IconButton
             variant="unstyled"
             color={highlightColor}
             icon={<X size={36} />}
             opacity={open ? 1 : 0}
             transform="opacity .4s"
-            aria-label="Close settings"
+            aria-label={t("sidebar.closeButtonLabel")}
             onClick={onClickClose}
           />
         </Tooltip>
-        <Flex alignItems="center" gap={2} aria-hidden="true">
-          <Text>Theme:</Text>
-          <Tooltip
-            label={`Go to ${colorMode === "dark" ? "light" : "dark"} mode`}
-            placement="left"
-          >
-            <IconButton
-              aria-label={`Go to ${
-                colorMode === "dark" ? "light" : "dark"
-              } mode`}
-              variant="unstyled"
-              color={highlightColor}
-              icon={
-                colorMode === "dark" ? (
-                  <SunHorizon size={36} weight="fill" />
-                ) : (
-                  <MoonStars size={36} weight="fill" />
-                )
-              }
-              onClick={toggleColorMode}
-            />
-          </Tooltip>
+        <Flex flexDir="column" alignItems="end">
+          <Flex alignItems="center" gap={2} aria-hidden="true">
+            <Text>{t("sidebar.theme")}</Text>
+            <Tooltip
+              label={t("sidebar.changeThemeButtonLabel", { theme: t(`themeName.${colorMode}`) })}
+              placement="left"
+            >
+              <IconButton
+                aria-label={t("sidebar.changeThemeButtonLabel", { theme: t(`themeName.${colorMode}`) })}
+                variant="unstyled"
+                color={highlightColor}
+                icon={
+                  colorMode === "dark" ? (
+                    <SunHorizon size={36} weight="fill" />
+                  ) : (
+                    <MoonStars size={36} weight="fill" />
+                  )
+                }
+                onClick={toggleColorMode}
+              />
+            </Tooltip>
+          </Flex>
+          <Flex gap={2} alignItems="center">
+            {t("sidebar.language")}
+            <Select value={i18n.language} onChange={(e) => i18n.changeLanguage(e.target.value)}>
+              <option value="en-US">en-US</option>
+              <option value="pt-BR">pt-BR</option>
+              <option value="es-ES">es-ES</option>
+            </Select>
+          </Flex>
         </Flex>
       </Flex>
+      <Divider />
       <Flex flexDir="column" alignItems="end" textAlign="right" gap={2}>
         <Heading
           as="h2"
@@ -83,10 +97,10 @@ function Sidebar(
           color={highlightColor}
           textTransform="uppercase"
         >
-          Quick switch
+          {t("quickSwitch.title")}
         </Heading>
         <Heading as="h3" size="sm" maxW="90%" color={textColor}>
-          Feel free to change to another page quickly through here!
+          {t("quickSwitch.description")}
         </Heading>
         <Flex>
           {projects.map((project) => (
