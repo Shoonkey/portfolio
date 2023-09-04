@@ -5,12 +5,14 @@ import {
   LinkedinLogo,
 } from "@phosphor-icons/react";
 import { Link, Flex, Grid, Heading, Text } from "@chakra-ui/react";
+import { Trans, useTranslation } from "react-i18next";
 
 import Page from "@/components/Page";
 import ContactInfoCard from "@/components/ContactInfoCard";
 import useThemeColor from "@/hooks/useThemeColor";
 
 function ContactPage() {
+  const { t } = useTranslation();
   const standardHighlightColor = useThemeColor("primary.500");
   const alternateHighlightColor = useThemeColor("primary.300");
   const standardColor = useThemeColor("text.800");
@@ -26,8 +28,7 @@ function ContactPage() {
           mx="auto"
           mb={8}
         >
-          On the interwebs <br />
-          you may find me through
+          <Trans t={t} i18nKey="pages.contact.title" />
         </Heading>
         <Grid
           flexGrow={1}

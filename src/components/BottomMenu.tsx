@@ -3,6 +3,7 @@ import { AppWindow } from "@phosphor-icons/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ElementType } from "react";
+import { useTranslation } from "react-i18next";
 
 import { BOTTOM_MENU_HEIGHT } from "@/shared/constants";
 import useThemeColor from "@/hooks/useThemeColor";
@@ -55,6 +56,8 @@ function MenuLink({ IconComponent, href, title }: MenuLinkProps) {
 }
 
 function BottomMenu({ open }: BottomMenuProps) {
+  const { t } = useTranslation();
+
   return (
     <Surface
       display="flex"
@@ -71,17 +74,17 @@ function BottomMenu({ open }: BottomMenuProps) {
       aria-label="Main"
     >
       <MenuLink
-        title="Intro"
+        title={t("bottomMenu.intro")}
         IconComponent={() => <AppWindow size={32} />}
         href="/"
       />
       <MenuLink
-        title="Projects"
+        title={t("bottomMenu.projects")}
         IconComponent={() => <AppWindow size={32} />}
         href="/projects"
       />
       <MenuLink
-        title="Contact"
+        title={t("bottomMenu.contact")}
         IconComponent={() => <AppWindow size={32} />}
         href="/contact"
       />

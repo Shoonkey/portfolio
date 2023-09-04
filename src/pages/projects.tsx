@@ -1,5 +1,6 @@
 import { Divider, Flex, Heading } from "@chakra-ui/react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import Page from "@/components/Page";
 import ProjectFilters from "@/components/ProjectFilters";
@@ -8,6 +9,7 @@ import techs from "@/shared/techs";
 import useThemeColor from "@/hooks/useThemeColor";
 
 function ProjectsPage() {
+  const { t } = useTranslation();
   const highlightColor = useThemeColor("primary.500");
   const textColor = useThemeColor("text.800");
 
@@ -29,11 +31,11 @@ function ProjectsPage() {
     <Page title="Projects">
       <Flex mt={2} flexDir="column" gap={6}>
         <Heading as="h1" textAlign="center" color={highlightColor}>
-          Projects
+          {t("pages.projects.title")}
         </Heading>
         <Flex flexDir="column" gap={6} maxW="800px" mx="auto">
           <Heading as="h2" size="md" textAlign="center" color={textColor}>
-            Filter by tech:
+            {t("pages.projects.filterByTech")}
           </Heading>
           <ProjectFilters selectedTags={selectedTags} onClickTech={toggleTag} />
         </Flex>

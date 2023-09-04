@@ -1,5 +1,6 @@
 import { IconButton, Tooltip } from "@chakra-ui/react";
 import { DotsThreeCircleVertical } from "@phosphor-icons/react";
+import { useTranslation } from "react-i18next";
 
 import useThemeColor from "@/hooks/useThemeColor";
 
@@ -9,10 +10,11 @@ interface OpenSidebarButtonProps {
 }
 
 function OpenSidebarButton({ isSidebarOpen, onClick }: OpenSidebarButtonProps) {
+  const { t } = useTranslation();
   const iconColor = useThemeColor("primary.500");
 
   return (
-    <Tooltip label="Open settings" placement="left">
+    <Tooltip label={t("sidebar.openButtonLabel")} placement="left">
       <IconButton
         variant="unstyled"
         position="absolute"
@@ -22,7 +24,7 @@ function OpenSidebarButton({ isSidebarOpen, onClick }: OpenSidebarButtonProps) {
         opacity={isSidebarOpen ? 0 : 1}
         transition="transform .4s, opacity .4s"
         icon={<DotsThreeCircleVertical size={48} weight="fill" />}
-        aria-label="Open settings"
+        aria-label={t("sidebar.openButtonLabel")}
         onClick={onClick}
       />
     </Tooltip>

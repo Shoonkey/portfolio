@@ -4,6 +4,7 @@
     "light": "claro"
   },
   "sidebar": {
+    "openButtonLabel": "Abrir configuraciones",
     "closeButtonLabel": "Cerrar configuraciones",
     "changeThemeButtonLabel": "Cambiar para el modo {{theme}}",
     "theme": "Tema",
@@ -13,5 +14,26 @@
     "title": "Cambio rápido",
     "description": "Siéntete libre de cambiar a otra página por aquí!",
     "youreHere": "Tú estás aquí"
+  },
+  "bottomMenu": {
+    "intro": "Intro",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "pages": {
+    "home": {
+      "heyThere": "¡Hola!",
+      "whoAmI": "Me llamo <0>{{name}}</0>.",
+      "briefIntroduction": "Soy un <0>desarrollador de software</0> [...]",
+      "ctaButton": "[...]",
+      "introduction": "<0>[...]</0><1>[...]</1>"
+    },
+    "projects": {
+      "title": "Proyectos",
+      "filterByTech": "Filtro por tecnología:"
+    },
+    "contact": {
+      "title": "En las internets <br /> puedes me encontrar a través de"
+    }
   }
 }

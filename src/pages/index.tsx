@@ -1,20 +1,13 @@
-import { useRef, useState, useEffect } from "react";
-import {
-  Box,
-  Flex,
-  Spinner,
-  Image,
-  Button,
-  Heading,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Flex, Image, Button, Heading, Text } from "@chakra-ui/react";
 import Link from "next/link";
 
 import Surface from "@/components/Surface";
 import Page from "@/components/Page";
 import useThemeColor from "@/hooks/useThemeColor";
+import { Trans, useTranslation } from "react-i18next";
 
 function Homepage() {
+  const { t } = useTranslation();
   const highlightColor = useThemeColor("primary.500");
   const hoveredColor = useThemeColor("primary.300");
 
@@ -50,24 +43,19 @@ function Homepage() {
                 <Text as="span" aria-hidden="true">
                   👋
                 </Text>{" "}
-                Hey there!
+                {t("pages.home.heyThere")}
               </Heading>
               <Heading as="h1" fontSize={32}>
-                I'm{" "}
-                <Text as="span" color={highlightColor}>
-                  Richard
-                </Text>
-                .
+                <Trans i18nKey="pages.home.whoAmI" values={{ name: "Richard" }}>
+                  <Text as="span" color={highlightColor} />
+                </Trans>
               </Heading>
             </Flex>
             <Flex textAlign="center" flexDir="column" my={6} gap={4}>
               <Heading as="h1" fontSize={24} lineHeight="36px">
-                I'm a{" "}
-                <Text as="span" color={highlightColor}>
-                  software developer
-                </Text>{" "}
-                with around 3 years of experience with Node, React, Vue and
-                Express.
+                <Trans i18nKey="pages.home.briefIntroduction">
+                  <Text as="span" color={highlightColor} />
+                </Trans>
               </Heading>
               <Button
                 as={Link}
@@ -77,7 +65,7 @@ function Homepage() {
                 _hover={{ bg: hoveredColor }}
                 color="black"
               >
-                Show me the projects
+                {t("pages.home.ctaButton")}
               </Button>
             </Flex>
             <Flex
@@ -87,19 +75,10 @@ function Homepage() {
               color="text.800"
               lineHeight="28px"
             >
-              <Text>
-                I started learning programming around 2013, learning Javascript
-                with ProcessingJS (a graphics library), and basic C for
-                competitive programming. Since then I’ve moved mainly to C++ in
-                competitive programming, and Typescript with Node and React for
-                web development.
-              </Text>
-              <Text>
-                I am passionate about development because I like learning and
-                creating new things from the ground up. Translating ideas to a
-                crazy fast logic-powered machine and seeing it understand me?
-                WHAT. SIGN ME UP!!
-              </Text>
+              <Trans i18nKey="pages.home.introduction">
+                <Text />
+                <Text />
+              </Trans>
             </Flex>
           </Flex>
         </Surface>
