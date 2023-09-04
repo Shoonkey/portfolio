@@ -1,30 +1,30 @@
+import { ImageProps } from "@chakra-ui/react";
+
+import NextLogo from "@/components/tech-logos/NextLogo";
+import NodeLogo from "@/components/tech-logos/NodeLogo";
+import ReactLogo from "@/components/tech-logos/ReactLogo"
+
 export interface ProjectTech {
   name: string;
   tag: string;
-  imgSrc: string;
-  imgAlt: string;
+  component: (props: ImageProps) => JSX.Element
 }
 
 const techs: ProjectTech[] = [
   {
     name: "ReactJS",
     tag: "react",
-    imgSrc: "/react-logo.svg",
-    imgAlt: "React logo: an atom with blue nucleus and blue electron orbits",
+    component: ReactLogo
   },
   {
     name: "NodeJS",
     tag: "node",
-    imgSrc: "/node-logo.svg",
-    imgAlt:
-      "NodeJS logo: Node written in an angular font with a green hexagon in the place of the O and JS in green in a hexagon below",
+    component: NodeLogo
   },
   {
     name: "NextJS",
     tag: "next",
-    imgSrc: "/next-logo.svg",
-    imgAlt:
-      "NextJS logo: NextJS written aligned in height with N and X sticking out in th edges",
+    component: NextLogo
   },
 ];
 

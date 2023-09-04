@@ -20,7 +20,7 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
   const standardBgColor = useThemeColor("bg.800");
   const quickSwitchBgColor = useThemeColor("bg.500");
   const highlightColor = useThemeColor("primary.500");
-  const standardBorderColor = useThemeColor("text.800")
+  const standardBorderColor = useThemeColor("text.800");
 
   return (
     <Flex flexDir="column" alignItems="end">
@@ -63,15 +63,9 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
           {mode === "project-list" && (
             <Flex justifyContent="space-between" alignItems="center">
               <Flex gap={4}>
-                {project.tags.includes("react") && (
-                  <TechLogo tagName="react" h="32px" />
-                )}
-                {project.tags.includes("node") && (
-                  <TechLogo tagName="node" h="32px" />
-                )}
-                {project.tags.includes("next") && (
-                  <TechLogo tagName="next" h="32px" />
-                )}
+                {project.tags.map((tag) => (
+                  <TechLogo tagName={tag} />
+                ))}
               </Flex>
               <a
                 href={project.githubLink}

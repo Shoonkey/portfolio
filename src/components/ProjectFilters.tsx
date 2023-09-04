@@ -33,7 +33,7 @@ function ProjectFilters({ selectedTags, onClickTech }: ProjectFiltersProps) {
           _hover={{ cursor: "pointer" }}
         >
           <Flex h="48px" justifyContent="center" alignItems="center">
-            <TechLogo tagName={tech.tag} h="100%" />
+            <TechLogo tagName={tech.tag} />
           </Flex>
           <Heading textAlign="center" as="h2" size="sm">
             {tech.name}

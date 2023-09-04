@@ -1,4 +1,5 @@
-import { Image, ImageProps } from "@chakra-ui/react";
+import { ImageProps } from "@chakra-ui/react";
+import { createElement } from "react";
 
 import techs from "@/shared/techs";
 
@@ -8,10 +9,7 @@ interface TechLogoProps {
 
 function TechLogo({ tagName, ...props }: TechLogoProps & ImageProps) {
   const tech = techs.find((t) => t.tag === tagName);
-
-  if (!tech) return null;
-
-  return <Image src={tech.imgSrc} alt={tech.imgAlt} {...props} />;
+  return tech ? createElement(tech.component, props) : null;
 }
 
 export default TechLogo;
