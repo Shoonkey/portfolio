@@ -18,53 +18,33 @@ function Homepage() {
   const highlightColor = useThemeColor("primary.500");
   const hoveredColor = useThemeColor("primary.300");
 
-  const imgRef = useRef<HTMLImageElement>(null);
-  const [imageHeight, setImageHeight] = useState<number>(0);
-
-  const updateImageHeight = () => {
-    if (!imgRef.current) return;
-    setImageHeight(imgRef.current.clientHeight);
-  }
-
-  useEffect(() => {
-    if (!imgRef.current) return;
-
-    updateImageHeight()
-    window.addEventListener("resize", updateImageHeight);
-    return () => window.removeEventListener("resize", updateImageHeight);
-  }, [imgRef]);
+  const imgHeight = "min(40vw, 300px)";
+  const offset = `calc(${imgHeight} / 2)`;
 
   return (
     <Page title="Home">
-      <Box pb={imageHeight / 2 + "px"}>
+      <Box pb={offset}>
         <Surface
           p={6}
           mt={12}
           maxW="800px"
           mx="auto"
-          transform={`translateY(${imageHeight / 2}px)`}
+          transform={`translateY(${offset})`}
           transition="transform .4s"
           borderRadius="32px"
           position="relative"
         >
-          {imageHeight === 0 && (
-            <Flex justifyContent="center" mt={4}>
-              <Spinner />
-            </Flex>
-          )}
           <Image
-            visibility={imageHeight !== 0 ? "visible" : "hidden"}
-            ref={imgRef}
             position="absolute"
             transition="transform .4s"
             transform="translate(-50%, -50%)"
             left="50%"
-            w="min(80%, 400px)"
+            h={imgHeight}
             borderRadius="48px"
             src="/pfp.jpg"
             alt="Me using a hoodie, with messy hair and looking to the right"
           />
-          <Flex flexDir="column" mt={imageHeight / 2 + "px"}>
+          <Flex flexDir="column" mt={offset}>
             <Flex textAlign="center" flexDir="column" my={6}>
               <Heading as="h1" fontSize={24}>
                 <Text as="span" aria-hidden="true">
