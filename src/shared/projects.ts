@@ -10,12 +10,12 @@ export interface Project {
 
 const projects: Project[] = [
   {
-    id: "test",
-    name: "Test",
-    href: "/project/test",
-    githubLink: "https://github.com",
-    imgSrc: "/flash-cards.png",
-    imgAlt: "Test",
+    id: "portfolio-v2",
+    name: "Portfolio v2 (this website)",
+    href: "/",
+    githubLink: "https://github.com/Shoonkey/portfolio",
+    imgSrc: "/portfolio-v2.png",
+    imgAlt: "Screenshot of this website's homepage",
     tags: ["react", "node", "next"],
   },
 ];
