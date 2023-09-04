@@ -45,7 +45,11 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
         }
         borderWidth="2px"
         borderStyle="solid"
-        borderColor={isActive ? highlightColor : standardBorderColor}
+        borderColor={
+          mode === "quick-switch" && isActive
+            ? highlightColor
+            : standardBorderColor
+        }
         _hover={{ cursor: "pointer", borderColor: highlightColor }}
         onClick={() => {
           if (!isActive) router.push(project.href);
@@ -57,7 +61,7 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
           </Box>
         </Link>
         <Flex flexDir="column" p={4} gap={2}>
-          <Heading textAlign="center" mt={2} as="h2">
+          <Heading textAlign="center" mt={2} as="h2" size="md">
             {project.name}
           </Heading>
           {mode === "project-list" && (
