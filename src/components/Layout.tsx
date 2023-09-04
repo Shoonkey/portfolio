@@ -29,10 +29,10 @@ function Layout({ children }: LayoutProps) {
   useEffect(() => {
     const closeMenu = () => setSidebarOpen(false);
 
-    router.events.on("routeChangeStart", closeMenu);
+    router.events.on("routeChangeComplete", closeMenu);
 
     return () => {
-      router.events.off("routeChangeStart", closeMenu);
+      router.events.off("routeChangeComplete", closeMenu);
     };
   }, [router]);
 
