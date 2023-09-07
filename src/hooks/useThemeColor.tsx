@@ -1,5 +1,4 @@
 import { useColorMode } from "@chakra-ui/react"
-import { useMemo } from "react"
 
 type CustomThemeColor =
   | "bg.500"
@@ -8,6 +7,7 @@ type CustomThemeColor =
   | "primary.500"
   | "text.500"
   | "text.800"
+  | "border.500"
 
 interface CustomColorDefinition {
   dark: string
@@ -21,6 +21,7 @@ const colors: Record<CustomThemeColor, CustomColorDefinition> = {
   'primary.500': { dark: "#ff8080", light: "#f93943" },
   'text.500': { dark: "#e2e2e2", light: "#363636" },
   'text.800': { dark: "#818181", light: "#090302" },
+  'border.500': { dark:  "#5A5A5A", light: "#2b2b2b" }
 }
 
 // This abstraction was necessary because ChakraUI does not allow for creating

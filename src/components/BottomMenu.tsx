@@ -57,6 +57,7 @@ function MenuLink({ IconComponent, href, title }: MenuLinkProps) {
 
 function BottomMenu({ open }: BottomMenuProps) {
   const { t } = useTranslation();
+  const borderColor = useThemeColor("border.500");
 
   return (
     <Surface
@@ -66,6 +67,9 @@ function BottomMenu({ open }: BottomMenuProps) {
       bottom="0px"
       transform={`translateY(${open ? 0 : BOTTOM_MENU_HEIGHT}px)`}
       transition="transform .4s"
+      borderTopStyle="solid"
+      borderTopWidth="1px"
+      borderTopColor={borderColor}
       px={4}
       w="100dvw"
       h={BOTTOM_MENU_HEIGHT}

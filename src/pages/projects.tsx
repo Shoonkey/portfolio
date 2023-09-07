@@ -12,6 +12,7 @@ function ProjectsPage() {
   const { t } = useTranslation();
   const highlightColor = useThemeColor("primary.500");
   const textColor = useThemeColor("text.800");
+  const borderColor = useThemeColor("border.500");
 
   const [selectedTags, setSelectedTags] = useState<string[]>(
     techs.map((t) => t.tag)
@@ -39,7 +40,7 @@ function ProjectsPage() {
           </Heading>
           <ProjectFilters selectedTags={selectedTags} onClickTech={toggleTag} />
         </Flex>
-        <Divider />
+        <Divider borderColor={borderColor} />
         <ProjectList selectedTags={selectedTags} />
       </Flex>
     </Page>

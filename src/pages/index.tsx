@@ -10,6 +10,7 @@ function Homepage() {
   const { t } = useTranslation();
   const highlightColor = useThemeColor("primary.500");
   const hoveredColor = useThemeColor("primary.300");
+  const borderColor = useThemeColor("border.500");
 
   const imgHeight = "min(40vw, 300px)";
   const offset = `calc(${imgHeight} / 2)`;
@@ -26,6 +27,9 @@ function Homepage() {
           transition="transform .4s"
           borderRadius="32px"
           position="relative"
+          borderStyle="solid"
+          borderWidth="1px"
+          borderColor={borderColor}
         >
           <Image
             position="absolute"

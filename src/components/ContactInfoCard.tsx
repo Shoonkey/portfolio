@@ -13,6 +13,7 @@ interface ContactInfoCardProps {
 function ContactInfoCard({ icon, title, description }: ContactInfoCardProps) {
   const iconColor = useThemeColor("primary.500");
   const textColor = useThemeColor("text.500");
+  const borderColor = useThemeColor("border.500");
 
   return (
     <Surface
@@ -26,6 +27,9 @@ function ContactInfoCard({ icon, title, description }: ContactInfoCardProps) {
       w="100%"
       transition="transform .4s"
       _hover={{ transform: "scale(0.97)" }}
+      borderStyle="solid"
+      borderWidth="1px"
+      borderColor={borderColor}
     >
       <Box color={iconColor}>{icon}</Box>
       <Heading as="h2" fontSize="md" color={textColor}>
