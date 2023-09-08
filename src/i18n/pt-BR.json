@@ -33,7 +33,28 @@
       "filterByTech": "Filtro por tecnologia:"
     },
     "contact": {
-      "title": "Nas internets <br /> você pode me achar através de"
+      "title": "Aqui algumas formas de me contatar <br /> pelas internets!",
+      "cards": {
+        "email": {
+          "dropEmail": "Me mande um email.",
+          "noNeedToBeShy": "Não precisa ser tímido ou tímida!",
+          "couldGoLike": "Ele poderia ser tipo <br /> \"<0>Oi! Seu design de portifólio tá brabo, bom trabalho!</0>\"",
+          "hitsSend": "* clica em enviar *",
+          "idBeLike": "Eu ficaria tipo <br /> \"<0>Oh, valeu. Que bom que você gostou! Me orgulho bastante dele.</0>\""
+        },
+        "github": {
+          "findMe": "Você pode achar bastante do meu código no",
+          "text": "<0>Open-source (código aberto) é algo incrível e eu quero contribuir mais! Mas onde que se consegue a confiança pra isso...?</0><1>Juro que vou tentar.</1>"
+        },
+        "linkedIn": {
+          "heresMy": "Aqui o meu",
+          "text": "Lá posto sobre projetos em andamento, sugestões de problemas de programação e outras coisas de trabalho!"
+        },
+        "codingPlatforms": {
+          "title": "Plataformas de programação",
+          "text": "Eu gosto de praticar programação pela internet! Comecei minha jornada na Beecrowd (quando ela ainda era URI Online Judge!) e geralmente estou na Beecrowd, na LeetCode ou na HackerRank esses dias!"
+        }
+      }
     }
   }
 }

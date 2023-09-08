@@ -50,30 +50,21 @@ function ContactPage() {
                     color={standardHighlightColor}
                   >
                     <Link href="mailto:shoonkey.dev@gmail.com">
-                      Drop me an email.
+                      {t("pages.contact.cards.email.dropEmail")}
                     </Link>
                   </Text>{" "}
-                  No need to be shy!
+                  {t("pages.contact.cards.email.noNeedToBeShy")}
                 </Text>
                 <Text>
-                  It could go like <br />
-                  {'"'}
-                  <Text as="span" color={standardHighlightColor}>
-                    Hey there! Your portfolio design looks cool, good job!
-                  </Text>
-                  {'"'}
+                  <Trans t={t} i18nKey="pages.contact.cards.email.couldGoLike">
+                    <Text as="span" color={standardHighlightColor} />
+                  </Trans>
                 </Text>
+                <Text>{t("pages.contact.cards.email.hitsSend")}</Text>
                 <Text>
-                  {"*"}hits send{"*"}
-                </Text>
-                <Text>
-                  I'd be like <br />
-                  {'"'}
-                  <Text as="span" color={standardHighlightColor}>
-                    Oh, thanks. I'm glad you think so. I'm pretty proud of it
-                    myself!
-                  </Text>
-                  {'"'}
+                  <Trans t={t} i18nKey="pages.contact.cards.email.idBeLike">
+                    <Text as="span" color={standardHighlightColor} />
+                  </Trans>
                 </Text>
               </>
             }
@@ -84,25 +75,27 @@ function ContactPage() {
             description={
               <>
                 <Text>
-                  You can find a lot of my code on{" "}
+                  {t("pages.contact.cards.github.findMe")}{" "}
                   <Text
                     as="span"
                     textDecoration="underline"
                     color={standardHighlightColor}
                   >
-                    <Link href="https://github.com/Shoonkey" target="_blank" rel="noopener noreferrer">
+                    <Link
+                      href="https://github.com/Shoonkey"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       Github
                     </Link>
                   </Text>
                   !
                 </Text>
-                <Text>
-                  Open-source is awesome and I want to contribute to it more!
-                  Where does one get the confidence for that though...?
-                </Text>
-                <Text>
-                  I swear I'mma try. <em>DATTEBAYO!</em>
-                </Text>
+                <Trans i18nKey="pages.contact.cards.github.text">
+                  <Text />
+                  <Text />
+                </Trans>
+                <em>DATTEBAYO!</em>
               </>
             }
           />
@@ -112,35 +105,33 @@ function ContactPage() {
             description={
               <>
                 <Text>
-                  Here's my{" "}
+                  {t("pages.contact.cards.linkedIn.heresMy")}{" "}
                   <Text
                     as="span"
                     textDecoration="underline"
                     color={standardHighlightColor}
                   >
-                    <Link href="https://twitter.com/shooonkey" target="_blank" rel="noopener noreferrer">
+                    <Link
+                      href="https://twitter.com/shooonkey"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       LinkedIn
                     </Link>
                   </Text>
                   !
                 </Text>
-                <Text>
-                  I post there about projects in the making, coding problem
-                  suggestions and other work stuff!
-                </Text>
+                <Text>{t("pages.contact.cards.linkedIn.text")}</Text>
               </>
             }
           />
           <ContactInfoCard
             icon={<Code size={64} />}
-            title="Coding platforms"
+            title={t("pages.contact.cards.codingPlatforms.title")}
             description={
               <Flex flexDir="column" gap={4}>
                 <Text>
-                  I like practicing programming around the internet! I've
-                  started my journey in Beecrowd (when it was still URI Online
-                  Judge!) and usually am on Beecrowd, LeetCode or HackerRank
-                  these days!
+                  {t("pages.contact.cards.codingPlatforms.text")}
                 </Text>
                 <Flex flexWrap="wrap" gap={4} justifyContent="center">
                   {[

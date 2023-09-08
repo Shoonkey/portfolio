@@ -33,7 +33,28 @@
       "filterByTech": "Filter by tech:"
     },
     "contact": {
-      "title": "On the interwebs <br /> you may find me through"
+      "title": "Here are some ways to contact me <br /> on the interwebs!",
+      "cards": {
+        "email": {
+          "dropEmail": "Drop me an email.",
+          "noNeedToBeShy": "No need to be shy!",
+          "couldGoLike": "It could go like <br /> \"<0>Hey there! Your portfolio design looks rad, good job!</0>\"",
+          "hitsSend": "* hits send *",
+          "idBeLike": "I'd be like <br /> \"<0>Oh, thanks. I'm glad you like it! I'm pretty proud of it myself.</0>\""
+        },
+        "github": {
+          "findMe": "You can find a lot of my code on",
+          "text": "<0>Open-source is an awesome thing and I want to contribute to it more! Where does one get the confidence for that though...?</0><1>I swear I'mma try.</1>"
+        },
+        "linkedIn": {
+          "heresMy": "Here's my",
+          "text": "I post there about projects in the making, coding problem suggestions and other work stuff!"
+        },
+        "codingPlatforms": {
+          "title": "Coding platforms",
+          "text": "I like practicing programming around the internet! I've started my journey in Beecrowd (when it was still URI Online Judge!) and usually am on Beecrowd, LeetCode or HackerRank these days!"
+        }
+      }
     }
   }
 }
