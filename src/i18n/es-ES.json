@@ -24,9 +24,9 @@
     "home": {
       "heyThere": "¡Hola!",
       "whoAmI": "Me llamo <0>{{name}}</0>.",
-      "briefIntroduction": "Soy un <0>desarrollador de software</0> [...]",
-      "ctaButton": "[...]",
-      "introduction": "<0>[...]</0><1>[...]</1>"
+      "briefIntroduction": "Soy un <0>desarrollador de software</0> con cerca de 3 años de experiencia. Ya trabajé con Node, React, Vue y Express.",
+      "ctaButton": "Muéstrame los proyectos",
+      "introduction": "<0>Empecé a aprender a programar alrededor de 2013, aprendiendo Javascript con ProcessingJS (una biblioteca gráfica), y C básico para programación competitiva. Desde entonces cambié principalmente para C++ en programación competitiva, y Typescript con Node y React para desarrollo web.</0><1>Me encanta el desarrollo porque me gusta aprender y crear cosas. Traducir ideas para una máquina de lógica de rápida y mirar ella me entender? LOCO. CUENTA CONMIGO!</1>"
     },
     "projects": {
       "title": "Proyectos",
