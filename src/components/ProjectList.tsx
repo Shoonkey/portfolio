@@ -7,8 +7,9 @@ import {
   VisuallyHidden,
 } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useMemo } from "react";
 
-import projects from "@/shared/projects";
+import useProjects from "@/shared/projects";
 import ProjectCard from "./ProjectCard";
 import useThemeColor from "@/hooks/useThemeColor";
 
@@ -19,17 +20,23 @@ interface ProjectListProps {
 function ProjectList({ selectedTags }: ProjectListProps) {
   const noTechsColor = useThemeColor("text.800");
   const highlightColor = useThemeColor("primary.300");
+  const projects = useProjects();
 
-  const filteredProjects = [];
+  const filteredProjects = useMemo(() => {
+    const output = [];
 
-  for (let i = 0; i < projects.length; i++) {
-    for (const tag of selectedTags) {
-      if (projects[i].tags.includes(tag)) {
-        filteredProjects.push(projects[i]);
-        break;
+    for (let i = 0; i < projects.length; i++) {
+      for (const tag of selectedTags) {
+        if (projects[i].tags.includes(tag)) {
+          output.push(projects[i]);
+          break;
+        }
       }
     }
-  }
+
+    return output;
+  }, [projects, selectedTags]);
+
 
   return (
     <Box px={4} flexGrow={1}>

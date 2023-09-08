@@ -12,10 +12,11 @@ import { X, MoonStars, SunHorizon } from "@phosphor-icons/react";
 import { ForwardedRef, forwardRef } from "react";
 import { useTranslation } from "react-i18next";
 
-import projects from "@/shared/projects";
+import getProjects from "@/shared/projects";
 import useThemeColor from "@/hooks/useThemeColor";
 import ProjectCard from "./ProjectCard";
 import Surface from "./Surface";
+import useProjects from "@/shared/projects";
 
 interface SidebarProps {
   open: boolean;
@@ -27,11 +28,12 @@ function Sidebar(
   ref: ForwardedRef<HTMLDivElement>
 ) {
   const { t, i18n } = useTranslation();
-
   const { colorMode, toggleColorMode } = useColorMode();
+
   const highlightColor = useThemeColor("primary.500");
   const textColor = useThemeColor("text.800");
   const borderColor = useThemeColor("border.500");
+  const projects = useProjects();
 
   return (
     <Surface

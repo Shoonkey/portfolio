@@ -1,3 +1,6 @@
+import { useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
+
 export interface Project {
   id: string;
   name: string;
@@ -8,16 +11,34 @@ export interface Project {
   tags: string[];
 }
 
-const projects: Project[] = [
+const projects: Omit<Project, "name" | "imgAlt">[] = [
   {
     id: "portfolio-v2",
-    name: "Portfolio v2 (this website)",
     href: "/",
     githubLink: "https://github.com/Shoonkey/portfolio",
     imgSrc: "/portfolio-v2.png",
-    imgAlt: "Screenshot of this website's homepage",
     tags: ["react", "node", "next"],
   },
 ];
 
-export default projects;
+const useProjects = () => {
+  const { t } = useTranslation();
+
+  const translatedProjects = useMemo<Project[]>(() => {
+    const output: Project[] = [];
+
+    for (const project of projects) {
+      output.push({
+        ...project,
+        name: t(`projects.${project.id}.name`),
+        imgAlt: t(`projects.${project.id}.imgAlt`)
+      });
+    }
+
+    return output;
+  }, [t]);
+
+  return translatedProjects;
+}
+
+export default useProjects;

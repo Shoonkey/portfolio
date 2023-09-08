@@ -16,6 +16,8 @@ function setupI18N() {
         "es-ES": { translation: es }
       }
     });
+  
+  return i18next;
 }
 
 export default setupI18N;

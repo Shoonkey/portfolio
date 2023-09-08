@@ -20,6 +20,12 @@
     "projects": "Projects",
     "contact": "Contact"
   },
+  "projects": {
+    "portfolio-v2": {
+      "name": "Portfolio v2 (this website)",
+      "imgAlt": "Screenshot of this website's homepage"
+    }
+  },
   "pages": {
     "home": {
       "heyThere": "Hey there!",
