@@ -3,29 +3,23 @@ import { DotsThreeCircleVertical } from "@phosphor-icons/react";
 import { useTranslation } from "react-i18next";
 
 import useThemeColor from "@/hooks/useThemeColor";
+import useGlobalSettings from "@/hooks/useGlobalSettings";
 
-interface OpenSidebarButtonProps {
-  isSidebarOpen: boolean;
-  onClick: () => void;
-}
-
-function OpenSidebarButton({ isSidebarOpen, onClick }: OpenSidebarButtonProps) {
+function OpenSidebarButton() {
   const { t } = useTranslation();
   const iconColor = useThemeColor("primary.500");
+  const { setSidebarOpen } = useGlobalSettings();
 
   return (
     <Tooltip label={t("sidebar.openButtonLabel")} placement="left">
       <IconButton
+        display="flex"
         variant="unstyled"
-        position="absolute"
-        right="16px"
-        top="16px"
         color={iconColor}
-        opacity={isSidebarOpen ? 0 : 1}
         transition="transform .4s, opacity .4s"
         icon={<DotsThreeCircleVertical size={48} weight="fill" />}
         aria-label={t("sidebar.openButtonLabel")}
-        onClick={onClick}
+        onClick={() => setSidebarOpen(true)}
       />
     </Tooltip>
   );

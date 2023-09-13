@@ -25,7 +25,7 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
   const standardBorderColor = useThemeColor("text.800");
 
   return (
-    <Flex flexDir="column" alignItems="end">
+    <Flex flexDir="column" alignItems="end" h="100%">
       {mode === "quick-switch" && isActive && (
         <Heading
           px={2}
@@ -40,6 +40,10 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
         </Heading>
       )}
       <Surface
+        display="flex"
+        flexDir="column"
+        w="100%"
+        h="100%"
         bg={mode === "quick-switch" ? quickSwitchBgColor : standardBgColor}
         borderRadius="16px"
         borderTopRightRadius={
@@ -57,11 +61,11 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
           if (!isActive) router.push(project.href);
         }}
       >
-        <Link href={project.href}>
-          <Box p={8} pb={0}>
-            <Image src={project.imgSrc} alt={project.imgAlt} />
-          </Box>
-        </Link>
+        <Box p={8} pb={0} flexGrow={1}>
+          <Link href={project.href}>
+              <Image src={project.imgSrc} alt={project.imgAlt} />
+          </Link>
+        </Box>
         <Flex flexDir="column" p={4} gap={2}>
           <Heading textAlign="center" mt={2} as="h2" size="md">
             {project.name}

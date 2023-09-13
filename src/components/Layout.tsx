@@ -1,8 +1,9 @@
-import { Flex, useColorModeValue } from "@chakra-ui/react";
-import { ReactNode, useEffect, useRef, useState } from "react";
-import { useRouter } from "next/router";
+import { Flex, Text } from "@chakra-ui/react";
+import { ReactNode, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 import { BOTTOM_MENU_HEIGHT } from "@/shared/constants";
+import useGlobalSettings from "@/hooks/useGlobalSettings";
 import BottomMenu from "./BottomMenu";
 import OpenSidebarButton from "./OpenSidebarButton";
 import Sidebar from "./Sidebar";
@@ -12,12 +13,11 @@ interface LayoutProps {
 }
 
 function Layout({ children }: LayoutProps) {
-  const router = useRouter();
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const bgColor = useColorModeValue("bgLight.500", "bgDark.500")
-
   const mainContentRef = useRef<HTMLDivElement>(null);
   const sidebarRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
+
+  const { sidebarOpen, viewingProjectId } = useGlobalSettings();
 
   useEffect(() => {
     if (!mainContentRef.current || !sidebarRef.current) return;
@@ -26,44 +26,41 @@ function Layout({ children }: LayoutProps) {
     else mainContentRef.current.scrollIntoView();
   }, [sidebarOpen, mainContentRef]);
 
-  useEffect(() => {
-    const closeMenu = () => setSidebarOpen(false);
-
-    router.events.on("routeChangeComplete", closeMenu);
-
-    return () => {
-      router.events.off("routeChangeComplete", closeMenu);
-    };
-  }, [router]);
-
   return (
     <>
       <Flex overflowX="hidden" scrollBehavior="smooth">
         <Flex
           flexDir="column"
           ref={mainContentRef}
-          position="relative"
           flexShrink={0}
           w="100dvw"
           h="100dvh"
           overflowY={sidebarOpen ? "hidden" : "auto"}
           px="16px"
           pt="16px"
-          pb={BOTTOM_MENU_HEIGHT + 16 + "px"}
-          bg="bg.500"
+          pb={
+            viewingProjectId == null ? BOTTOM_MENU_HEIGHT + 16 + "px" : "16px"
+          }
         >
+          <Flex
+            justifyContent="end"
+            alignItems="center"
+            gap={2}
+            h="48px"
+            flexShrink={0}
+          >
+            {viewingProjectId != null && (
+              <Text>
+                Viewing{" "}
+                <strong>{t(`projects.${viewingProjectId}.name`)}</strong>
+              </Text>
+            )}
+            {!sidebarOpen && <OpenSidebarButton />}
+          </Flex>
           {children}
-          <OpenSidebarButton
-            isSidebarOpen={sidebarOpen}
-            onClick={() => setSidebarOpen(true)}
-          />
-          <BottomMenu open={!sidebarOpen} />
+          {viewingProjectId == null && <BottomMenu open={!sidebarOpen} />}
         </Flex>
-        <Sidebar
-          ref={sidebarRef}
-          open={sidebarOpen}
-          onClickClose={() => setSidebarOpen(false)}
-        />
+        <Sidebar ref={sidebarRef} />
       </Flex>
     </>
   );

@@ -37,7 +37,6 @@ function ProjectList({ selectedTags }: ProjectListProps) {
     return output;
   }, [projects, selectedTags]);
 
-
   return (
     <Box px={4} flexGrow={1}>
       <AnimatePresence>
@@ -61,17 +60,17 @@ function ProjectList({ selectedTags }: ProjectListProps) {
             </Heading>
           </Flex>
         ) : (
-          filteredProjects.map((project) => (
-            <Grid
-              key={project.id}
-              gap={4}
-              gridTemplateColumns={{
-                base: "1fr",
-                md: "1fr 1fr",
-                lg: "1fr 1fr 1fr",
-              }}
-            >
+          <Grid
+            gap={4}
+            gridTemplateColumns={{
+              base: "1fr",
+              md: "1fr 1fr",
+              lg: "1fr 1fr 1fr",
+            }}
+          >
+            {filteredProjects.map((project) => (
               <Box
+                key={project.id}
                 as={motion.div}
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -79,8 +78,8 @@ function ProjectList({ selectedTags }: ProjectListProps) {
               >
                 <ProjectCard project={project} mode="project-list" />
               </Box>
-            </Grid>
-          ))
+            ))}
+          </Grid>
         )}
         {}
       </AnimatePresence>

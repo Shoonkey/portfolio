@@ -9,31 +9,36 @@ import {
   Divider,
 } from "@chakra-ui/react";
 import { X, MoonStars, SunHorizon } from "@phosphor-icons/react";
-import { ForwardedRef, forwardRef } from "react";
+import { ForwardedRef, forwardRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useRouter } from "next/router";
 
-import getProjects from "@/shared/projects";
-import useThemeColor from "@/hooks/useThemeColor";
 import ProjectCard from "./ProjectCard";
 import Surface from "./Surface";
 import useProjects from "@/shared/projects";
+import useThemeColor from "@/hooks/useThemeColor";
+import useGlobalSettings from "@/hooks/useGlobalSettings";
 
-interface SidebarProps {
-  open: boolean;
-  onClickClose: () => void;
-}
-
-function Sidebar(
-  { open, onClickClose }: SidebarProps,
-  ref: ForwardedRef<HTMLDivElement>
-) {
+function Sidebar(_props: any, ref: ForwardedRef<HTMLDivElement>) {
+  const router = useRouter();
   const { t, i18n } = useTranslation();
   const { colorMode, toggleColorMode } = useColorMode();
+  const { sidebarOpen, setSidebarOpen } = useGlobalSettings();
 
   const highlightColor = useThemeColor("primary.500");
   const textColor = useThemeColor("text.800");
   const borderColor = useThemeColor("border.500");
   const projects = useProjects();
+
+  useEffect(() => {
+    const closeMenu = () => setSidebarOpen(false);
+
+    router.events.on("routeChangeComplete", closeMenu);
+
+    return () => {
+      router.events.off("routeChangeComplete", closeMenu);
+    };
+  }, [router]);
 
   return (
     <Surface
@@ -57,10 +62,10 @@ function Sidebar(
             variant="unstyled"
             color={highlightColor}
             icon={<X size={36} />}
-            opacity={open ? 1 : 0}
+            opacity={sidebarOpen ? 1 : 0}
             transform="opacity .4s"
             aria-label={t("sidebar.closeButtonLabel")}
-            onClick={onClickClose}
+            onClick={() => setSidebarOpen(false)}
           />
         </Tooltip>
         <Flex flexDir="column" alignItems="end">
@@ -117,7 +122,7 @@ function Sidebar(
         <Heading as="h3" size="sm" maxW="90%" color={textColor}>
           {t("quickSwitch.description")}
         </Heading>
-        <Flex>
+        <Flex flexDir="column" gap={2}>
           {projects.map((project) => (
             <ProjectCard
               key={project.id}
@@ -131,4 +136,4 @@ function Sidebar(
   );
 }
 
-export default forwardRef<HTMLDivElement, SidebarProps>(Sidebar);
+export default forwardRef<HTMLDivElement, any>(Sidebar);

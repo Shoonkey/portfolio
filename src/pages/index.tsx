@@ -1,10 +1,10 @@
 import { Box, Flex, Image, Button, Heading, Text } from "@chakra-ui/react";
 import Link from "next/link";
+import { Trans, useTranslation } from "react-i18next";
 
 import Surface from "@/components/Surface";
 import Page from "@/components/Page";
 import useThemeColor from "@/hooks/useThemeColor";
-import { Trans, useTranslation } from "react-i18next";
 
 function Homepage() {
   const { t } = useTranslation();
@@ -20,7 +20,6 @@ function Homepage() {
       <Box pb={offset}>
         <Surface
           p={6}
-          mt={12}
           maxW="800px"
           mx="auto"
           transform={`translateY(${offset})`}
