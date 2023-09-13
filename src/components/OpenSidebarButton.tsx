@@ -1,9 +1,10 @@
-import { IconButton, Tooltip } from "@chakra-ui/react";
+import { IconButton } from "@chakra-ui/react";
 import { DotsThreeCircleVertical } from "@phosphor-icons/react";
 import { useTranslation } from "react-i18next";
 
 import useThemeColor from "@/hooks/useThemeColor";
 import useGlobalSettings from "@/hooks/useGlobalSettings";
+import CustomTooltip from "./CustomTooltip";
 
 function OpenSidebarButton() {
   const { t } = useTranslation();
@@ -11,7 +12,7 @@ function OpenSidebarButton() {
   const { setSidebarOpen } = useGlobalSettings();
 
   return (
-    <Tooltip label={t("sidebar.openButtonLabel")} placement="left">
+    <CustomTooltip label={t("sidebar.openButtonLabel")} placement="left">
       <IconButton
         display="flex"
         variant="unstyled"
@@ -21,7 +22,7 @@ function OpenSidebarButton() {
         aria-label={t("sidebar.openButtonLabel")}
         onClick={() => setSidebarOpen(true)}
       />
-    </Tooltip>
+    </CustomTooltip>
   );
 }
 

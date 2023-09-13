@@ -13,11 +13,12 @@ import { ForwardedRef, forwardRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
 
-import ProjectCard from "./ProjectCard";
-import Surface from "./Surface";
 import useProjects from "@/shared/projects";
 import useThemeColor from "@/hooks/useThemeColor";
 import useGlobalSettings from "@/hooks/useGlobalSettings";
+import ProjectCard from "./ProjectCard";
+import Surface from "./Surface";
+import CustomTooltip from "./CustomTooltip";
 
 function Sidebar(_props: any, ref: ForwardedRef<HTMLDivElement>) {
   const router = useRouter();
@@ -57,7 +58,7 @@ function Sidebar(_props: any, ref: ForwardedRef<HTMLDivElement>) {
       borderLeftColor={borderColor}
     >
       <Flex justifyContent="space-between">
-        <Tooltip label={t("sidebar.closeButtonLabel")} placement="left">
+        <CustomTooltip label={t("sidebar.closeButtonLabel")} placement="left">
           <IconButton
             variant="unstyled"
             color={highlightColor}
@@ -67,11 +68,11 @@ function Sidebar(_props: any, ref: ForwardedRef<HTMLDivElement>) {
             aria-label={t("sidebar.closeButtonLabel")}
             onClick={() => setSidebarOpen(false)}
           />
-        </Tooltip>
+        </CustomTooltip>
         <Flex flexDir="column" alignItems="end">
           <Flex alignItems="center" gap={2} aria-hidden="true">
             <Text>{t("sidebar.theme")}</Text>
-            <Tooltip
+            <CustomTooltip
               label={t("sidebar.changeThemeButtonLabel", {
                 theme: t(`themeName.${colorMode}`),
               })}
@@ -92,7 +93,7 @@ function Sidebar(_props: any, ref: ForwardedRef<HTMLDivElement>) {
                 }
                 onClick={toggleColorMode}
               />
-            </Tooltip>
+            </CustomTooltip>
           </Flex>
           <Flex gap={2} alignItems="center">
             {t("sidebar.language")}
