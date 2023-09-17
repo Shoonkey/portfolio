@@ -3,6 +3,7 @@ import { ImageProps } from "@chakra-ui/react";
 import NextLogo from "@/components/tech-logos/NextLogo";
 import NodeLogo from "@/components/tech-logos/NodeLogo";
 import ReactLogo from "@/components/tech-logos/ReactLogo"
+import ViteLogo from "@/components/tech-logos/ViteLogo";
 
 export interface ProjectTech {
   name: string;
@@ -26,6 +27,11 @@ const techs: ProjectTech[] = [
     tag: "next",
     component: NextLogo
   },
+  {
+    name: "ViteJS",
+    tag: "vite",
+    component: ViteLogo
+  }
 ];
 
 export default techs;

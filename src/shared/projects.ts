@@ -26,7 +26,7 @@ export const projectsMetadata: Omit<Project, "name" | "imgAlt">[] = [
     href: "/project/pomodoro-timer",
     githubLink: "https://github.com/Shoonkey/pomodoro-timer",
     imgSrc: "/portfoli-v2.png",
-    tags: ["react", "node"]
+    tags: ["react", "node", "vite"]
   }
 ];
 
