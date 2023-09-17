@@ -82,11 +82,12 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
                 ))}
               </Flex>
               <Flex gap={2}>
-                <CustomTooltip label="Github repository" placement="top">
+                <CustomTooltip label={t("projectCard.githubRepo")} placement="top">
                   <Link
                     href={project.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={t("projectCard.githubRepo")}
                   >
                     <Image
                       w="32px"
@@ -97,13 +98,23 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
                   </Link>
                 </CustomTooltip>
                 <CustomTooltip
-                  label={project.isSolo ? "Solo project" : "Collaboration"}
+                  label={
+                    project.isSolo
+                      ? t("projectCard.soloProject")
+                      : t("projectCard.collaboration")
+                  }
                   placement="top"
                 >
                   {project.isSolo ? (
-                    <HandPalm size={32} aria-label="Solo project" />
+                    <HandPalm
+                      size={32}
+                      aria-label={t("projectCard.soloProject")}
+                    />
                   ) : (
-                    <Handshake size={32} aria-label="Collaboration" />
+                    <Handshake
+                      size={32}
+                      aria-label={t("projectCard.collaboration")}
+                    />
                   )}
                 </CustomTooltip>
               </Flex>

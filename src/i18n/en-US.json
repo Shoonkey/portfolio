@@ -1,4 +1,5 @@
 {
+  "globalAppTitle": "Shoonkey's portfolio",
   "themeName": {
     "dark": "dark",
     "light": "light"
@@ -20,6 +21,11 @@
     "projects": "Projects",
     "contact": "Contact"
   },
+  "projectCard": {
+    "githubRepo": "Github repository",
+    "soloProject": "Solo project",
+    "collaboration": "Collaboration"
+  },
   "projects": {
     "portfolio-v2": {
       "name": "Portfolio v2 (this website)",
@@ -31,6 +37,7 @@
   },
   "pages": {
     "home": {
+      "pageTitle": "Home",
       "heyThere": "Hey there!",
       "whoAmI": "I'm <0>{{name}}</0>.",
       "briefIntroduction": "I'm a <0>software developer</0> with around 3 years of experience. I've worked with Node, React, Vue and Express.",
@@ -38,10 +45,12 @@
       "introduction": "<0>I started learning programming around 2013, learning Javascript with ProcessingJS (a graphics library), and basic C for competitive programming. Since then I’ve moved mainly to C++ in competitive programming, and Typescript with Node and React for web development.</0><1>I am passionate about development because I like learning and creating new things. Translating ideas to a crazy fast logic-powered machine and seeing it understand me? WHAT. SIGN ME UP!!</1>"
     },
     "projects": {
+      "pageTitle": "Projects",
       "title": "Projects",
       "filterByTech": "Filter by tech:"
     },
     "contact": {
+      "pageTitle": "Contact",
       "title": "Here are some ways to contact me <br /> on the interwebs!",
       "cards": {
         "email": {

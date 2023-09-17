@@ -1,4 +1,5 @@
 {
+  "globalAppTitle": "Portifólio do Shoonkey",
   "themeName": {
     "dark": "escuro",
     "light": "claro"
@@ -20,6 +21,11 @@
     "projects": "Projetos",
     "contact": "Contato"
   },
+  "projectCard": {
+    "githubRepo": "Repositório Github",
+    "soloProject": "Projeto solo",
+    "collaboration": "Colaboração"
+  },
   "projects": {
     "portfolio-v2": {
       "name": "Portifólio v2 (este site)",
@@ -31,6 +37,7 @@
   },
   "pages": {
     "home": {
+      "pageTitle": "Página inicial",
       "heyThere": "Oi!",
       "whoAmI": "Me chamo <0>{{name}}</0>.",
       "briefIntroduction": "Sou um <0>desenvolvedor de software</0> com cerca de 3 anos de experiência. Já trabalhei com Node, React, Vue e Express.",
@@ -38,10 +45,12 @@
       "introduction": "<0>Comecei a aprender a programar por volta de 2013, aprendendo Javascript com ProcessingJS (uma biblioteca gráfica), e C básico pra programação competitiva. Desde então eu mudei principalmente pra C++ em programação competitiva, e Typescript com Node e React pra desenvolvimento web</0><1>Sou apaixonado por desenvolvimento porque gosto de aprender e criar coisas. Traduzir ideias pra uma máquina de lógica doida de rápida e ver ela me entender? CARA. ONDE EU ASSINO?!</1>"
     },
     "projects": {
+      "pageTitle": "Projetos",
       "title": "Projetos",
       "filterByTech": "Filtro por tecnologia:"
     },
     "contact": {
+      "pageTitle": "Contato",
       "title": "Aqui algumas formas de me contatar <br /> pelas internets!",
       "cards": {
         "email": {

@@ -18,7 +18,7 @@ function ContactPage() {
   const standardColor = useThemeColor("text.800");
 
   return (
-    <Page title="Contact">
+    <Page title={t("pages.contact.pageTitle")}>
       <Flex flexDir="column" color={standardColor} flexGrow={1}>
         <Heading
           as="h1"

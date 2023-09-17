@@ -29,7 +29,7 @@ function ProjectsPage() {
   };
 
   return (
-    <Page title="Projects">
+    <Page title={t("pages.projects.pageTitle")}>
       <Flex mt={2} flexDir="column" gap={6}>
         <Heading as="h1" textAlign="center" color={highlightColor}>
           {t("pages.projects.title")}

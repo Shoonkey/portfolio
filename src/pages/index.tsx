@@ -16,7 +16,7 @@ function Homepage() {
   const offset = `calc(${imgHeight} / 2)`;
 
   return (
-    <Page title="Home">
+    <Page title={t("pages.home.pageTitle")}>
       <Box pb={offset}>
         <Surface
           p={6}

@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { ReactNode, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 interface PageProps {
   title: string;
@@ -7,7 +8,8 @@ interface PageProps {
 }
 
 function Page({ title, children }: PageProps) {
-  const computedTitle = useMemo(() => `${title} | Shoonkey's portfolio`, []);
+  const { t } = useTranslation();
+  const computedTitle = useMemo(() => `${title} | ${t("globalAppTitle")}`, [title, t]);
 
   return (
     <>
