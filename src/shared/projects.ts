@@ -10,6 +10,7 @@ export interface Project {
   imgAlt: string;
   tags: string[];
   isMeta?: boolean;
+  isSolo?: boolean;
 }
 
 export const projectsMetadata: Omit<Project, "name" | "imgAlt">[] = [
@@ -19,14 +20,16 @@ export const projectsMetadata: Omit<Project, "name" | "imgAlt">[] = [
     githubLink: "https://github.com/Shoonkey/portfolio",
     imgSrc: "/portfolio-v2.png",
     tags: ["react", "node", "next"],
-    isMeta: true
+    isMeta: true,
+    isSolo: true
   },
   {
     id: "pomodoro-timer",
     href: "/project/pomodoro-timer",
     githubLink: "https://github.com/Shoonkey/pomodoro-timer",
     imgSrc: "/portfoli-v2.png",
-    tags: ["react", "node", "vite"]
+    tags: ["react", "node", "vite"],
+    isSolo: true
   }
 ];
 

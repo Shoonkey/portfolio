@@ -2,11 +2,13 @@ import { Box, Flex, Heading, Image } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
+import { HandPalm, Handshake } from "@phosphor-icons/react";
 
 import { Project } from "@/shared/projects";
 import useThemeColor from "@/hooks/useThemeColor";
 import Surface from "./Surface";
 import TechLogo from "./TechLogo";
+import CustomTooltip from "./CustomTooltip";
 
 interface ProjectCardProps {
   project: Project;
@@ -79,18 +81,32 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
                   <TechLogo key={tag} tagName={tag} />
                 ))}
               </Flex>
-              <a
-                href={project.githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  w="32px"
-                  src="/github-mark.svg"
-                  alt="Github logo, Invertocat: a little cat in the middle of a circle, tail pointing left"
-                  _hover={{ filter: "grayscale(.4)" }}
-                />
-              </a>
+              <Flex gap={2}>
+                <CustomTooltip label="Github repository" placement="top">
+                  <Link
+                    href={project.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image
+                      w="32px"
+                      src="/github-mark.svg"
+                      alt="Github logo, Invertocat: a little cat in the middle of a circle, tail pointing left"
+                      _hover={{ filter: "grayscale(.4)" }}
+                    />
+                  </Link>
+                </CustomTooltip>
+                <CustomTooltip
+                  label={project.isSolo ? "Solo project" : "Collaboration"}
+                  placement="top"
+                >
+                  {project.isSolo ? (
+                    <HandPalm size={32} aria-label="Solo project" />
+                  ) : (
+                    <Handshake size={32} aria-label="Collaboration" />
+                  )}
+                </CustomTooltip>
+              </Flex>
             </Flex>
           )}
         </Flex>
