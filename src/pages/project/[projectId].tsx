@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { useColorMode } from "@chakra-ui/react";
 
 import Page from "@/components/Page";
 import Surface from "@/components/Surface";
@@ -14,8 +15,9 @@ interface ProjectPageProps {
 
 interface AppSetupProps {
   containerId: string;
-  basename?: string;
-  isSubApp?: boolean;
+  isSubapp?: boolean;
+  language: string;
+  theme: "dark" | "light";
 }
 
 type AppSetupFunction = (props: AppSetupProps) => void;
@@ -38,7 +40,8 @@ export const getStaticProps = (async ({ params }) => {
 }) satisfies GetStaticProps<ProjectPageProps>;
 
 function ProjectPage({ projectId }: ProjectPageProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const { colorMode } = useColorMode();
 
   const borderColor = useThemeColor("border.500");
   const { viewingProjectId, setViewingProjectId } = useGlobalSettings();
@@ -49,26 +52,24 @@ function ProjectPage({ projectId }: ProjectPageProps) {
   }, [projectId]);
 
   useEffect(() => {
-    if (!viewingProjectId)
-      return;
+    if (!viewingProjectId) return;
 
     (async () => {
       const setupApp: AppSetupFunction = (
-        await import(`@/../projects/${viewingProjectId}/src/setupApp`)
+        await import(`@/../projects/${viewingProjectId}/src/setup`)
       ).default;
 
       setupApp({
         containerId: "subapp-root",
-        basename: `/project/${viewingProjectId}`,
-        isSubApp: true,
+        isSubapp: true,
+        theme: colorMode,
+        language: i18n.language
       });
     })();
-  }, [viewingProjectId])
-
-  const name = t(`projects.${projectId}.name`);
+  }, [viewingProjectId, i18n.language, colorMode]);
 
   return (
-    <Page title={name}>
+    <Page title={t(`projects.${projectId}.name`)}>
       <Surface
         flexGrow={1}
         p={2}
