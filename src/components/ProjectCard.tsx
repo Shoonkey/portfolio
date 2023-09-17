@@ -1,12 +1,12 @@
-import { Box, Flex, Heading, Image, useColorModeValue } from "@chakra-ui/react";
+import { Box, Flex, Heading, Image } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
-import Surface from "./Surface";
-import TechLogo from "./TechLogo";
 import { Project } from "@/shared/projects";
 import useThemeColor from "@/hooks/useThemeColor";
-import { useTranslation } from "react-i18next";
+import Surface from "./Surface";
+import TechLogo from "./TechLogo";
 
 interface ProjectCardProps {
   project: Project;
@@ -17,7 +17,9 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
   const router = useRouter();
   const { t } = useTranslation();
 
-  const isActive = router.pathname.startsWith(project.href);
+  const isActive =
+    (project.isMeta && !router.asPath.startsWith("/project")) ||
+    router.asPath.startsWith(project.href);
 
   const standardBgColor = useThemeColor("bg.800");
   const quickSwitchBgColor = useThemeColor("bg.500");
@@ -25,7 +27,7 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
   const standardBorderColor = useThemeColor("text.800");
 
   return (
-    <Flex flexDir="column" alignItems="end" h="100%">
+    <Flex flexDir="column" alignItems="end" h="100%" order={isActive ? -1 : 0}>
       {mode === "quick-switch" && isActive && (
         <Heading
           px={2}
@@ -63,7 +65,7 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
       >
         <Box p={8} pb={0} flexGrow={1}>
           <Link href={project.href}>
-              <Image src={project.imgSrc} alt={project.imgAlt} />
+            <Image src={project.imgSrc} alt={project.imgAlt} />
           </Link>
         </Box>
         <Flex flexDir="column" p={4} gap={2}>

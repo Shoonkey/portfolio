@@ -22,7 +22,9 @@ type AppSetupFunction = (props: AppSetupProps) => void;
 
 export const getStaticPaths = (() => {
   return {
-    paths: projectsMetadata.map((p) => ({ params: { projectId: p.id } })),
+    paths: projectsMetadata
+      .filter((p) => !p.isMeta)
+      .map((p) => ({ params: { projectId: p.id } })),
     fallback: false,
   };
 }) satisfies GetStaticPaths;
@@ -39,30 +41,29 @@ function ProjectPage({ projectId }: ProjectPageProps) {
   const { t } = useTranslation();
 
   const borderColor = useThemeColor("border.500");
-  const { setViewingProjectId } = useGlobalSettings();
+  const { viewingProjectId, setViewingProjectId } = useGlobalSettings();
 
   useEffect(() => {
     setViewingProjectId(projectId);
+    return () => setViewingProjectId(null);
+  }, [projectId]);
+
+  useEffect(() => {
+    if (!viewingProjectId)
+      return;
 
     (async () => {
       const setupApp: AppSetupFunction = (
-        await import(`@/../projects/${projectId}/src/setupApp`)
+        await import(`@/../projects/${viewingProjectId}/src/setupApp`)
       ).default;
 
       setupApp({
         containerId: "subapp-root",
-        basename: `/project/${projectId}`,
+        basename: `/project/${viewingProjectId}`,
         isSubApp: true,
       });
     })();
-    return () => setViewingProjectId(null);
-  }, [projectId]);
-
-  const project = projectsMetadata.find(
-    (metadata) => metadata.id === projectId
-  );
-
-  if (!project) return null;
+  }, [viewingProjectId])
 
   const name = t(`projects.${projectId}.name`);
 

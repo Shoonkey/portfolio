@@ -3,7 +3,6 @@ import {
   IconButton,
   Heading,
   useColorMode,
-  Tooltip,
   Text,
   Select,
   Divider,
