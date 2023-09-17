@@ -1,0 +1,3 @@
+[submodule "projects/pomodoro-timer"]
+	path = projects/pomodoro-timer
+	url = https://github.com/Shoonkey/pomodoro-timer
