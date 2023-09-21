@@ -30,10 +30,11 @@
   "projects": {
     "portfolio-v2": {
       "name": "Portafolio v2 (este sitio web)",
-      "imgAlt": "Screenshot de la página de inicio deste sitio web"
+      "imgAlt": "Captura de pantalla de la página de inicio deste sitio web: una imagen de mí con una descripción de mi profesión"
     },
     "pomodoro-timer": {
-      "name": "Cronómetro Pomodoro"
+      "name": "Cronómetro Pomodoro",
+      "imgAlt": "Captura de pantalla del app: un cronómetro de 20 minutos timer al lado de una lista de tareas"
     }
   },
   "pages": {

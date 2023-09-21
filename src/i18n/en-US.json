@@ -30,10 +30,11 @@
   "projects": {
     "portfolio-v2": {
       "name": "Portfolio v2 (this website)",
-      "imgAlt": "Screenshot of this website's homepage"
+      "imgAlt": "Screenshot of this website's homepage: an image of me with a description of my profession"
     },
     "pomodoro-timer": {
-      "name": "Pomodoro Timer"
+      "name": "Pomodoro Timer",
+      "imgAlt": "Screenshot of Pomodoro timer app: a 20-minute timer besides a todo list"
     }
   },
   "pages": {
