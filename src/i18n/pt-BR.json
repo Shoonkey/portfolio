@@ -19,7 +19,8 @@
   "bottomMenu": {
     "intro": "Intro",
     "projects": "Projetos",
-    "contact": "Contato"
+    "contact": "Contato",
+    "ariaLabel": "Navegação principal"
   },
   "projectCard": {
     "githubRepo": "Repositório Github",
@@ -47,7 +48,12 @@
     "projects": {
       "pageTitle": "Projetos",
       "title": "Projetos",
-      "filterByTech": "Filtro por tecnologia:"
+      "filterByTech": "Filtro por tecnologia:",
+      "resultsLabel": "Resultados",
+      "noResults": {
+        "text": "Nenhuma tecnologia selecionada, mente vazia",
+        "asciiArt": "Arte ASCII de um rosto com um monóculo"
+      }
     },
     "contact": {
       "pageTitle": "Contato",

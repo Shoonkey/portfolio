@@ -12,12 +12,15 @@ import { useMemo } from "react";
 import useProjects from "@/shared/projects";
 import ProjectCard from "./ProjectCard";
 import useThemeColor from "@/hooks/useThemeColor";
+import { useTranslation } from "react-i18next";
 
 interface ProjectListProps {
   selectedTags: string[];
 }
 
 function ProjectList({ selectedTags }: ProjectListProps) {
+  const { t } = useTranslation();
+
   const noTechsColor = useThemeColor("text.800");
   const highlightColor = useThemeColor("primary.300");
   const projects = useProjects();
@@ -45,17 +48,17 @@ function ProjectList({ selectedTags }: ProjectListProps) {
             flexDir="column"
             gap={2}
             textAlign="center"
-            aria-label="Results"
+            aria-label={t("pages.projects.resultsLabel")}
           >
             <Heading as="h3" size="md" color={noTechsColor}>
-              No tech selected, brain empty
+              {t("pages.projects.noResults.text")}
             </Heading>
             <Heading as="h3" size="2xl" color={highlightColor}>
               <Text as="span" aria-hidden="true">
                 {"(╭ರ_⊙)"}
               </Text>
               <VisuallyHidden>
-                ASCII art of a face with a monocle
+                {t("pages.projects.noResults.asciiArt")}
               </VisuallyHidden>
             </Heading>
           </Flex>

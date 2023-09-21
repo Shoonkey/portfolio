@@ -61,6 +61,7 @@ function BottomMenu({ open }: BottomMenuProps) {
 
   return (
     <Surface
+      as="nav"
       display="flex"
       position="fixed"
       left="0px"
@@ -74,8 +75,7 @@ function BottomMenu({ open }: BottomMenuProps) {
       w="100dvw"
       h={BOTTOM_MENU_HEIGHT}
       justifyContent={{ base: "space-around", md: "center" }}
-      role="navigation"
-      aria-label="Main"
+      aria-label={t("bottomMenu.ariaLabel")}
     >
       <MenuLink
         title={t("bottomMenu.intro")}
