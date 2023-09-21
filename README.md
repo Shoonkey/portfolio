@@ -24,3 +24,9 @@ To properly clone it containing its submodules you'll need to run `git clone --r
 
 ### Updating submodules
 To properly update submodules to their latest branch, you can run `git submodule update --remote`.
+
+### Setup caveat
+
+To prevent dependency redundancy and keep project files separate, the subapps are installed as a folder (see npm [install](https://docs.npmjs.com/cli/v9/commands/npm-install) docs, under `npm install <folder>`). Every time a subapp is installed for the first time or re-installed to update its dependencies, NPM is gonna create a new entry in the main `package.json` with an arbitrary name (usually `app`).
+
+If it's a new subapp, rename it to fit what it is, and if it's not new, remove the unnecessary added line and keep the old one. Run `npm i` in the project root to fix NPM's lockfile naming of the subapp folder dependencies.
