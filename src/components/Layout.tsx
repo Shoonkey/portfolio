@@ -1,4 +1,4 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Text, useColorMode } from "@chakra-ui/react";
 import { ReactNode, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
@@ -8,6 +8,7 @@ import useGlobalSettings from "@/hooks/useGlobalSettings";
 import BottomMenu from "./BottomMenu";
 import OpenSidebarButton from "./OpenSidebarButton";
 import Sidebar from "./Sidebar";
+import useThemeColor from "@/hooks/useThemeColor";
 
 interface LayoutProps {
   children: ReactNode;
@@ -17,7 +18,8 @@ function Layout({ children }: LayoutProps) {
   const mainContentRef = useRef<HTMLDivElement>(null);
   const sidebarRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
-
+  
+  const highlightColor = useThemeColor("primary.500");
   const { sidebarOpen, viewingProjectId } = useGlobalSettings();
 
   useEffect(() => {
@@ -58,7 +60,12 @@ function Layout({ children }: LayoutProps) {
                   <strong>{t(`projects.${viewingProjectId}.name`)}</strong>
                 </Text>
                 <Link href="/projects">
-                  <Text textDecoration="underline" color="pink.200">{t("pages.singleProject.goBackToProjects")}</Text>
+                  <Text
+                    textDecoration="underline"
+                    color={highlightColor}
+                  >
+                    {t("pages.singleProject.goBackToProjects")}
+                  </Text>
                 </Link>
               </Flex>
             )}
