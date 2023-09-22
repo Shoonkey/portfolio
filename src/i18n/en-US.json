@@ -56,6 +56,10 @@
         "asciiArt": "ASCII art of a face with a monocle"
       }
     },
+    "singleProject": {
+      "viewing": "Viewing",
+      "goBackToProjects": "Go back to project list"
+    },
     "contact": {
       "pageTitle": "Contact",
       "title": "Here are some ways to contact me <br /> on the interwebs!",

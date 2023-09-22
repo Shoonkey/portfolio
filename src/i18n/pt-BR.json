@@ -56,6 +56,10 @@
         "asciiArt": "Arte ASCII de um rosto com um monóculo"
       }
     },
+    "singleProject": {
+      "viewing": "Visualizando",
+      "goBackToProjects": "Voltar para a lista de projetos"
+    },
     "contact": {
       "pageTitle": "Contato",
       "title": "Aqui algumas formas de me contatar <br /> pelas internets!",
