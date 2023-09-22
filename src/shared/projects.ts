@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 
 export interface Project {
   id: string;
+  type: "website" | "bot";
   name: string;
   href: string;
   githubLink: string;
@@ -16,6 +17,7 @@ export interface Project {
 export const projectsMetadata: Omit<Project, "name" | "imgAlt">[] = [
   {
     id: "portfolio-v2",
+    type: "website",
     href: "/projects",
     githubLink: "https://github.com/Shoonkey/portfolio",
     imgSrc: "/portfolio-v2.png",
@@ -25,6 +27,7 @@ export const projectsMetadata: Omit<Project, "name" | "imgAlt">[] = [
   },
   {
     id: "pomodoro-timer",
+    type: "website",
     href: "/project/pomodoro-timer",
     githubLink: "https://github.com/Shoonkey/pomodoro-timer",
     imgSrc: "/pomodoro-timer.png",

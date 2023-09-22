@@ -2,7 +2,7 @@ import { Box, Flex, Heading, Image } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
-import { HandPalm, Handshake } from "@phosphor-icons/react";
+import { CodeBlock, HandPalm, Handshake, Robot } from "@phosphor-icons/react";
 
 import { Project } from "@/shared/projects";
 import useThemeColor from "@/hooks/useThemeColor";
@@ -13,6 +13,26 @@ import CustomTooltip from "./CustomTooltip";
 interface ProjectCardProps {
   project: Project;
   mode: "quick-switch" | "project-list";
+}
+
+function ProjectTypeIcon({ type }: Pick<Project, "type">) {
+  const { t } = useTranslation();
+
+  if (type === "website")
+    return (
+      <CustomTooltip label={t("projectCard.types.website")} placement="top">
+        <CodeBlock size={32} />
+      </CustomTooltip>
+    );
+
+  if (type === "bot")
+    return (
+      <CustomTooltip label={t("projectCard.types.bot")} placement="top">
+        <Robot size={32} />
+      </CustomTooltip>
+    );
+
+  return null;
 }
 
 function ProjectCard({ project, mode }: ProjectCardProps) {
@@ -82,7 +102,10 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
                 ))}
               </Flex>
               <Flex gap={2}>
-                <CustomTooltip label={t("projectCard.githubRepo")} placement="top">
+                <CustomTooltip
+                  label={t("projectCard.githubRepo")}
+                  placement="top"
+                >
                   <Link
                     href={project.githubLink}
                     target="_blank"
@@ -117,6 +140,7 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
                     />
                   )}
                 </CustomTooltip>
+                <ProjectTypeIcon type={project.type} />
               </Flex>
             </Flex>
           )}

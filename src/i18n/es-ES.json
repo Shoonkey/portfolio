@@ -25,7 +25,11 @@
   "projectCard": {
     "githubRepo": "Repositorio Github",
     "soloProject": "Proyecto solo",
-    "collaboration": "Colaboración"
+    "collaboration": "Colaboración",
+    "types": {
+      "website": "Sitio web",
+      "bot": "Bot"
+    }
   },
   "projects": {
     "portfolio-v2": {
