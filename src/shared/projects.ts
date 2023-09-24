@@ -12,6 +12,7 @@ export interface Project {
   tags: string[];
   isMeta?: boolean;
   isSolo?: boolean;
+  beingBuilt?: boolean;
 }
 
 export const projectsMetadata: Omit<Project, "name" | "imgAlt">[] = [
@@ -33,6 +34,26 @@ export const projectsMetadata: Omit<Project, "name" | "imgAlt">[] = [
     imgSrc: "/pomodoro-timer.png",
     tags: ["react", "node", "vite"],
     isSolo: true
+  },
+  {
+    id: "flash-cards",
+    type: "website",
+    href: "/project/flash-cards",
+    githubLink: "https://github.com/Shoonkey/flash-cards",
+    imgSrc: "/flash-cards.png",
+    tags: ["react", "node", "vite"],
+    isSolo: true,
+    beingBuilt: true
+  },
+  {
+    id: "music-theory-study",
+    type: "website",
+    href: "/project/music-theory-study",
+    githubLink: "https://github.com/Shoonkey/flash-cards",
+    imgSrc: "/music-theory-quiz.png",
+    tags: ["react", "node", "vite"],
+    isSolo: true,
+    beingBuilt: true
   }
 ];
 

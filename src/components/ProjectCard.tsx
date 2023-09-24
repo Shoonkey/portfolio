@@ -1,14 +1,21 @@
-import { Box, Flex, Heading, Image } from "@chakra-ui/react";
+import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
-import { CodeBlock, HandPalm, Handshake, Robot } from "@phosphor-icons/react";
+import {
+  CodeBlock,
+  Hammer,
+  HandPalm,
+  Handshake,
+  Robot,
+} from "@phosphor-icons/react";
 
 import { Project } from "@/shared/projects";
 import useThemeColor from "@/hooks/useThemeColor";
 import Surface from "./Surface";
 import TechLogo from "./TechLogo";
 import CustomTooltip from "./CustomTooltip";
+import { ReactNode } from "react";
 
 interface ProjectCardProps {
   project: Project;
@@ -33,6 +40,45 @@ function ProjectTypeIcon({ type }: Pick<Project, "type">) {
     );
 
   return null;
+}
+
+function ProjectMain({ project }: Pick<ProjectCardProps, "project">) {
+  const { t } = useTranslation();
+
+  let content: ReactNode;
+
+  if (project.beingBuilt) {
+    content = (
+      <>
+        <Image filter="blur(2px)" src={project.imgSrc} alt={project.imgAlt} />
+        <Flex
+          flexDirection="column"
+          position="absolute"
+          top="0"
+          left="0"
+          w="100%"
+          h="100%"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Hammer size={82} />
+          <Text fontSize="1.5rem">{t("projectCard.soon")}</Text>
+        </Flex>
+      </>
+    );
+  } else {
+    content = (
+      <Link href={project.href}>
+        <Image src={project.imgSrc} alt={project.imgAlt} />
+      </Link>
+    );
+  }
+
+  return (
+    <Box p={8} pb={0} flexGrow={1} position="relative">
+      {content}
+    </Box>
+  );
 }
 
 function ProjectCard({ project, mode }: ProjectCardProps) {
@@ -82,14 +128,10 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
         }
         _hover={{ cursor: "pointer", borderColor: highlightColor }}
         onClick={() => {
-          if (!isActive) router.push(project.href);
+          if (!isActive && !project.beingBuilt) router.push(project.href);
         }}
       >
-        <Box p={8} pb={0} flexGrow={1}>
-          <Link href={project.href}>
-            <Image src={project.imgSrc} alt={project.imgAlt} />
-          </Link>
-        </Box>
+        <ProjectMain project={project} />
         <Flex flexDir="column" p={4} gap={2}>
           <Heading textAlign="center" mt={2} as="h2" size="md">
             {project.name}

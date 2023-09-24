@@ -26,6 +26,7 @@
     "githubRepo": "Github repository",
     "soloProject": "Solo project",
     "collaboration": "Collaboration",
+    "soon": "Soon...",
     "types": {
       "website": "Website",
       "bot": "Bot"
@@ -39,6 +40,14 @@
     "pomodoro-timer": {
       "name": "Pomodoro Timer",
       "imgAlt": "Screenshot of Pomodoro timer app: a 20-minute timer besides a todo list"
+    },
+    "flash-cards" : {
+      "name": "Flash cards",
+      "imgAlt": "Screenshot of the flash card app: there's a card centered and two cards barely appearing on either side of the screen"
+    },
+    "music-theory-study" : {
+      "name": "Music theory study",
+      "imgAlt": "Screenshot of one of the quizzes, showing a musical staff with a treble clef and 4/4 time signature, asking to place where the note E (mi) is"
     }
   },
   "pages": {

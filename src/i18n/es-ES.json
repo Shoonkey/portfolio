@@ -26,6 +26,7 @@
     "githubRepo": "Repositorio Github",
     "soloProject": "Proyecto solo",
     "collaboration": "Colaboración",
+    "soon": "En breve...",
     "types": {
       "website": "Sitio web",
       "bot": "Bot"
@@ -39,6 +40,14 @@
     "pomodoro-timer": {
       "name": "Cronómetro Pomodoro",
       "imgAlt": "Captura de pantalla del app: un cronómetro de 20 minutos timer al lado de una lista de tareas"
+    },
+    "flash-cards" : {
+      "name": "Tarjetas de estudio",
+      "imgAlt": "Captura de pantalla del app de tarjetas de estudio: hay una tarjeta en el centro y dos tarjetas aparecendo poco en ambos los lados de la pantalla"
+    },
+    "music-theory-study" : {
+      "name": "Estudo de teoria musical",
+      "imgAlt": "Captura de pantalla de un de los quizzes, mostrando un pentagrama musical con una clave de sol y un compás de 4/4, pidiendo para indicar dónde es la nota E (mi)"
     }
   },
   "pages": {
