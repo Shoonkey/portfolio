@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Image, Text, useBreakpointValue } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
@@ -9,33 +9,38 @@ import {
   Handshake,
   Robot,
 } from "@phosphor-icons/react";
+import { ReactNode } from "react";
 
 import { Project } from "@/shared/projects";
 import useThemeColor from "@/hooks/useThemeColor";
 import Surface from "./Surface";
 import TechLogo from "./TechLogo";
 import CustomTooltip from "./CustomTooltip";
-import { ReactNode } from "react";
 
 interface ProjectCardProps {
   project: Project;
   mode: "quick-switch" | "project-list";
 }
 
-function ProjectTypeIcon({ type }: Pick<Project, "type">) {
+interface ProjectTypeIconProps {
+  type: Project["type"];
+  size: number;
+}
+
+function ProjectTypeIcon({ type, size }: ProjectTypeIconProps) {
   const { t } = useTranslation();
 
   if (type === "website")
     return (
       <CustomTooltip label={t("projectCard.types.website")} placement="top">
-        <CodeBlock size={32} />
+        <CodeBlock size={size} />
       </CustomTooltip>
     );
 
   if (type === "bot")
     return (
       <CustomTooltip label={t("projectCard.types.bot")} placement="top">
-        <Robot size={32} />
+        <Robot size={size} />
       </CustomTooltip>
     );
 
@@ -90,6 +95,7 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
     (project.isMeta && !router.asPath.startsWith("/project")) ||
     router.asPath.startsWith(project.href);
 
+  const iconSize = useBreakpointValue({ base: 24, md: 32 }) || 32;
   const standardBgColor = useThemeColor("bg.800");
   const quickSwitchBgColor = useThemeColor("bg.500");
   const highlightColor = useThemeColor("primary.500");
@@ -141,7 +147,7 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
             <Flex justifyContent="space-between" alignItems="center">
               <Flex gap={4}>
                 {project.tags.map((tag) => (
-                  <TechLogo key={tag} tagName={tag} />
+                  <TechLogo key={tag} tagName={tag} sizeBehavior="responsive" />
                 ))}
               </Flex>
               <Flex gap={2}>
@@ -156,7 +162,7 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
                     aria-label={t("projectCard.githubRepo")}
                   >
                     <Image
-                      w="32px"
+                      w={`${iconSize}px`}
                       src="/github-mark.svg"
                       alt="Github logo, Invertocat: a little cat in the middle of a circle, tail pointing left"
                       _hover={{ filter: "grayscale(.4)" }}
@@ -173,17 +179,17 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
                 >
                   {project.isSolo ? (
                     <HandPalm
-                      size={32}
+                      size={iconSize}
                       aria-label={t("projectCard.soloProject")}
                     />
                   ) : (
                     <Handshake
-                      size={32}
+                      size={iconSize}
                       aria-label={t("projectCard.collaboration")}
                     />
                   )}
                 </CustomTooltip>
-                <ProjectTypeIcon type={project.type} />
+                <ProjectTypeIcon type={project.type} size={iconSize} />
               </Flex>
             </Flex>
           )}

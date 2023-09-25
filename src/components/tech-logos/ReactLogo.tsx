@@ -1,11 +1,12 @@
 import { Image, ImageProps } from "@chakra-ui/react";
+import { TechLogoProps } from "../TechLogo";
 
-function ReactLogo(props: ImageProps) {
+function ReactLogo({ sizeBehavior, ...props }: TechLogoProps & ImageProps) {
   return (
     <Image
       src="/react-logo.svg"
       alt="React logo: an atom with blue nucleus and blue electron orbits"
-      w="48px"
+      w={sizeBehavior === "responsive" ? { base: "24px", md: "48px" } : "48px"}
       {...props}
     />
   );

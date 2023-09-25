@@ -3,8 +3,9 @@ import { createElement } from "react";
 
 import techs from "@/shared/techs";
 
-interface TechLogoProps {
+export interface TechLogoProps {
   tagName: string;
+  sizeBehavior: "responsive" | "fixed";
 }
 
 function TechLogo({ tagName, ...props }: TechLogoProps & ImageProps) {
