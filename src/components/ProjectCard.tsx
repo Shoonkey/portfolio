@@ -60,6 +60,7 @@ function ProjectMain({ project }: Pick<ProjectCardProps, "project">) {
           h="100%"
           justifyContent="center"
           alignItems="center"
+          color="#e2e2e2"
         >
           <Hammer size={82} />
           <Text fontSize="1.5rem">{t("projectCard.soon")}</Text>
