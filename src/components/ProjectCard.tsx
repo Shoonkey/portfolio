@@ -1,4 +1,11 @@
-import { Box, Flex, Heading, Image, Text, useBreakpointValue } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Heading,
+  Image,
+  Text,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
@@ -154,6 +161,7 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
                 <CustomTooltip
                   label={t("projectCard.githubRepo")}
                   placement="top"
+                  wrapsLink
                 >
                   <Link
                     href={project.githubLink}
