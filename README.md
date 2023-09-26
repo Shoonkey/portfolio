@@ -6,8 +6,12 @@ It is my second take on a portfolio design with new takes on the projects as wel
 
 ## Projects
 
-### To be adapted into the new portfolio from the old one
+### Up
+
+Projects already adapted and running
 - **Pomodoro timer app** v1
+
+### To be adapted into the new portfolio from the old one
 - A **music theory quiz app** about elementary stuff
 - A **word search puzzle maker**
 - Ordis, a **Discord bot** for making wishlists and things related to the game Warframe
