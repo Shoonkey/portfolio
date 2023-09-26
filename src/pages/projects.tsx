@@ -1,8 +1,8 @@
 import { Divider, Flex, Heading } from "@chakra-ui/react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import Page from "@/components/Page";
+import Page, { PageMetadata } from "@/components/Page";
 import ProjectFilters from "@/components/ProjectFilters";
 import ProjectList from "@/components/ProjectList";
 import techs from "@/shared/techs";
@@ -18,6 +18,16 @@ function ProjectsPage() {
     techs.map((t) => t.tag)
   );
 
+  const metadata = useMemo<PageMetadata>(
+    () => ({
+      title: t("pages.projects.meta.title"),
+      description: t("pages.projects.meta.description"),
+      imgSrc: "",
+      imgAlt: ""
+    }),
+    [t]
+  );
+
   const toggleTag = (techTag: string) => {
     const techIdx = selectedTags.indexOf(techTag);
     if (techIdx == -1) setSelectedTags([...selectedTags, techTag]);
@@ -29,7 +39,7 @@ function ProjectsPage() {
   };
 
   return (
-    <Page title={t("pages.projects.pageTitle")}>
+    <Page metadata={metadata}>
       <Flex mt={2} flexDir="column" gap={6}>
         <Heading as="h1" textAlign="center" color={highlightColor}>
           {t("pages.projects.title")}

@@ -35,24 +35,31 @@
   "projects": {
     "portfolio-v2": {
       "name": "Portafolio v2 (este sitio web)",
-      "imgAlt": "Captura de pantalla de la página de inicio deste sitio web: una imagen de mí con una descripción de mi profesión"
+      "imgAlt": "Captura de pantalla de la página de inicio deste sitio web: una imagen de mí con una descripción de mi profesión",
+      "metaDescription": "Portafolio de Shoonkey: Intro, proyectos y informaciones de contacto"
     },
     "pomodoro-timer": {
       "name": "Cronómetro Pomodoro",
-      "imgAlt": "Captura de pantalla del app: un cronómetro de 20 minutos timer al lado de una lista de tareas"
+      "imgAlt": "Captura de pantalla del app: un cronómetro de 20 minutos timer al lado de una lista de tareas",
+      "metaDescription": "Un app de cronómetro Pomodoro minimalista en que tú puedes gerenciar sus tareas y pausas"
     },
     "flash-cards" : {
       "name": "Tarjetas de estudio",
-      "imgAlt": "Captura de pantalla del app de tarjetas de estudio: hay una tarjeta en el centro y dos tarjetas aparecendo poco en ambos los lados de la pantalla"
+      "imgAlt": "Captura de pantalla del app de tarjetas de estudio: hay una tarjeta en el centro y dos tarjetas aparecendo poco en ambos los lados de la pantalla",
+      "metaDescription": "Un app de tarjetas de estudio para ayudar a estudiar y memorizar cosas geniales"
     },
     "music-theory-study" : {
-      "name": "Estudo de teoria musical",
-      "imgAlt": "Captura de pantalla de un de los quizzes, mostrando un pentagrama musical con una clave de sol y un compás de 4/4, pidiendo para indicar dónde es la nota E (mi)"
+      "name": "Estudio de teoría musical",
+      "imgAlt": "Captura de pantalla de un de los quizzes, mostrando un pentagrama musical con una clave de sol y un compás de 4/4, pidiendo para indicar dónde es la nota E (mi)",
+      "metaDescription": "Un app compuesto de informaciones y quizzes de teoría musical"
     }
   },
   "pages": {
     "home": {
-      "pageTitle": "Página principal",
+      "meta": {
+        "title": "Página principal",
+        "description": ""
+      },
       "heyThere": "¡Hola!",
       "whoAmI": "Me llamo <0>{{name}}</0>.",
       "briefIntroduction": "Soy un <0>desarrollador de software</0> con cerca de 3 años de experiencia. Ya trabajé con Node, React, Vue y Express.",
@@ -60,7 +67,10 @@
       "introduction": "<0>Empecé a aprender a programar alrededor de 2013, aprendiendo Javascript con ProcessingJS (una biblioteca gráfica), y C básico para programación competitiva. Desde entonces cambié principalmente para C++ en programación competitiva, y Typescript con Node y React para desarrollo web.</0><1>Me encanta el desarrollo porque me gusta aprender y crear cosas. Traducir ideas para una máquina de lógica de rápida y mirar ella me entender? LOCO. CUENTA CONMIGO!</1>"
     },
     "projects": {
-      "pageTitle": "Proyectos",
+      "meta": {
+        "title": "Proyectos",
+        "description": ""
+      },
       "title": "Proyectos",
       "filterByTech": "Filtro por tecnología:",
       "resultsLabel": "Resultados",
@@ -74,7 +84,10 @@
       "goBackToProjects": "Volver a la lista de proyectos"
     },
     "contact": {
-      "pageTitle": "Contacto",
+      "meta": {
+        "title": "Contacto",
+        "description": ""
+      },
       "title": "Aquí algunas formas de me contactar <br /> pelas internets",
       "cards": {
         "email": {

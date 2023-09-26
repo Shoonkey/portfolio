@@ -6,8 +6,9 @@ import {
 } from "@phosphor-icons/react";
 import { Link, Flex, Grid, Heading, Text } from "@chakra-ui/react";
 import { Trans, useTranslation } from "react-i18next";
+import { useMemo } from "react";
 
-import Page from "@/components/Page";
+import Page, { PageMetadata } from "@/components/Page";
 import ContactInfoCard from "@/components/ContactInfoCard";
 import useThemeColor from "@/hooks/useThemeColor";
 
@@ -17,8 +18,18 @@ function ContactPage() {
   const alternateHighlightColor = useThemeColor("primary.300");
   const standardColor = useThemeColor("text.800");
 
+  const metadata = useMemo<PageMetadata>(
+    () => ({
+      title: t("pages.contact.meta.title"),
+      description: t("pages.contact.meta.description"),
+      imgSrc: "",
+      imgAlt: ""
+    }),
+    [t]
+  );
+
   return (
-    <Page title={t("pages.contact.pageTitle")}>
+    <Page metadata={metadata}>
       <Flex flexDir="column" color={standardColor} flexGrow={1}>
         <Heading
           as="h1"
@@ -130,9 +141,7 @@ function ContactPage() {
             title={t("pages.contact.cards.codingPlatforms.title")}
             description={
               <Flex flexDir="column" gap={4}>
-                <Text>
-                  {t("pages.contact.cards.codingPlatforms.text")}
-                </Text>
+                <Text>{t("pages.contact.cards.codingPlatforms.text")}</Text>
                 <Flex flexWrap="wrap" gap={4} justifyContent="center">
                   {[
                     {

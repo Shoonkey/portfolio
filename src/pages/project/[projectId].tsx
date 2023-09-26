@@ -1,11 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useColorMode } from "@chakra-ui/react";
 
-import Page from "@/components/Page";
+import Page, { PageMetadata } from "@/components/Page";
 import Surface from "@/components/Surface";
-import { projectsMetadata } from "@/shared/projects";
+import useProjects, { projectsMetadata } from "@/shared/projects";
 import useThemeColor from "@/hooks/useThemeColor";
 import useGlobalSettings from "@/hooks/useGlobalSettings";
 
@@ -49,6 +49,19 @@ function ProjectPage({ projectId }: ProjectPageProps) {
 
   const borderColor = useThemeColor("border.500");
   const { viewingProjectId, setViewingProjectId } = useGlobalSettings();
+  const projects = useProjects();
+
+  const currentProject = useMemo(() => projects.find(p => p.id === projectId)!, [projectId, projects]);
+
+  const metadata = useMemo<PageMetadata>(
+    () => ({
+      title: t(`projects.${viewingProjectId}.meta.title`),
+      description: t(`projects.${viewingProjectId}.meta.description`),
+      imgSrc: currentProject.imgSrc,
+      imgAlt: currentProject.imgAlt
+    }),
+    [t, viewingProjectId, currentProject]
+  );
 
   useEffect(() => {
     setViewingProjectId(projectId);
@@ -69,21 +82,21 @@ function ProjectPage({ projectId }: ProjectPageProps) {
         containerId: "subapp-root",
         isSubapp: true,
         theme: colorMode,
-        language: i18n.language
+        language: i18n.language,
       });
     })();
 
     return () => {
       // This triggers a warning about synchronous unmounting during React rendering
-      // but is the only solution to properly re-rendering the app after first visit to the 
+      // but is the only solution to properly re-rendering the app after first visit to the
       // page and I aven't found a React API alternative that does it asynchronously
       // so I'm keeping it!
       root.unmount();
-    }
+    };
   }, [viewingProjectId, i18n.language, colorMode]);
 
   return (
-    <Page title={t(`projects.${projectId}.name`)}>
+    <Page metadata={metadata}>
       <Surface
         flexGrow={1}
         p={2}

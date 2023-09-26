@@ -2,14 +2,25 @@ import Head from "next/head";
 import { ReactNode, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
-interface PageProps {
+export interface PageMetadata {
   title: string;
+  description: string;
+  imgSrc: string;
+  imgAlt: string;
+}
+
+interface PageProps {
+  metadata: PageMetadata;
   children: ReactNode;
 }
 
-function Page({ title, children }: PageProps) {
+function Page({ metadata, children }: PageProps) {
   const { t } = useTranslation();
-  const computedTitle = useMemo(() => `${title} | ${t("globalAppTitle")}`, [title, t]);
+
+  const computedTitle = useMemo(
+    () => `${metadata.title} | ${t("globalAppTitle")}`,
+    [t, metadata]
+  );
 
   return (
     <>
@@ -17,6 +28,24 @@ function Page({ title, children }: PageProps) {
         <title>{computedTitle}</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content={metadata.description} />
+
+        {/* Metadata for social media previews */}
+
+        <meta property="og:title" content={computedTitle} />
+        <meta property="og:description" content={metadata.description} />
+        <meta property="og:url" content="https://shoonkey.com" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={`https://shoonkey.com${metadata.imgSrc}`} />
+        <meta property="og:image:alt" content={metadata.imgAlt} />
+
+        <meta name="twitter:title" content={computedTitle} />
+        <meta name="twitter:description" content={metadata.description} />
+        <meta name="twitter:url" content="https://shoonkey.com" />
+        <meta name="twitter:image:src" content={`https://shoonkey.com${metadata.imgSrc}`} />
+        <meta name="twitter:image:alt" content={metadata.imgAlt} />
+        <meta name="twitter:creator" content="@shooonkey" />
+        <meta name="twitter:site" content="@shooonkey" />
       </Head>
       {children}
     </>

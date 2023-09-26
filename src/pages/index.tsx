@@ -1,9 +1,10 @@
 import { Box, Flex, Image, Button, Heading, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import { Trans, useTranslation } from "react-i18next";
+import { useMemo } from "react";
 
 import Surface from "@/components/Surface";
-import Page from "@/components/Page";
+import Page, { PageMetadata } from "@/components/Page";
 import useThemeColor from "@/hooks/useThemeColor";
 
 function Homepage() {
@@ -15,8 +16,15 @@ function Homepage() {
   const imgHeight = "min(40vw, 300px)";
   const offset = `calc(${imgHeight} / 2)`;
 
+  const metadata = useMemo<PageMetadata>(() => ({
+    title: t("pages.home.meta.title"),
+    description: t("pages.home.meta.description"),
+    imgSrc: "",
+    imgAlt: ""
+  }), [t]);
+
   return (
-    <Page title={t("pages.home.pageTitle")}>
+    <Page metadata={metadata}>
       <Box pb={offset}>
         <Surface
           p={6}

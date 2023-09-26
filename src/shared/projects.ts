@@ -9,13 +9,14 @@ export interface Project {
   githubLink: string;
   imgSrc: string;
   imgAlt: string;
+  metaDescription: string;
   tags: string[];
   isMeta?: boolean;
   isSolo?: boolean;
   beingBuilt?: boolean;
 }
 
-export const projectsMetadata: Omit<Project, "name" | "imgAlt">[] = [
+export const projectsMetadata: Omit<Project, "name" | "imgAlt" | "metaDescription">[] = [
   {
     id: "portfolio-v2",
     type: "website",
@@ -66,6 +67,7 @@ const useProjects = () => {
         ...metadata,
         name: t(`projects.${metadata.id}.name`),
         imgAlt: t(`projects.${metadata.id}.imgAlt`),
+        metaDescription: t(`projects.${metadata.id}.metaDescription`)
       })),
     [t]
   );
