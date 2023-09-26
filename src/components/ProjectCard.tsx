@@ -161,7 +161,7 @@ function ProjectCard({ project, mode }: ProjectCardProps) {
                 <CustomTooltip
                   label={t("projectCard.githubRepo")}
                   placement="top"
-                  wrapsLink
+                  wrapsClickable
                 >
                   <Link
                     href={project.githubLink}

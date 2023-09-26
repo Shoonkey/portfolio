@@ -12,7 +12,7 @@ function OpenSidebarButton() {
   const { setSidebarOpen } = useGlobalSettings();
 
   return (
-    <CustomTooltip label={t("sidebar.openButtonLabel")} placement="left">
+    <CustomTooltip label={t("sidebar.openButtonLabel")} placement="left" wrapsClickable>
       <IconButton
         display="flex"
         variant="unstyled"

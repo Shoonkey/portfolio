@@ -57,7 +57,11 @@ function Sidebar(_props: any, ref: ForwardedRef<HTMLDivElement>) {
       borderLeftColor={borderColor}
     >
       <Flex justifyContent="space-between">
-        <CustomTooltip label={t("sidebar.closeButtonLabel")} placement="left">
+        <CustomTooltip
+          label={t("sidebar.closeButtonLabel")}
+          placement="left"
+          wrapsClickable
+        >
           <IconButton
             variant="unstyled"
             color={highlightColor}
@@ -76,6 +80,7 @@ function Sidebar(_props: any, ref: ForwardedRef<HTMLDivElement>) {
                 theme: t(`themeName.${colorMode}`),
               })}
               placement="left"
+              wrapsClickable
             >
               <IconButton
                 aria-label={t("sidebar.changeThemeButtonLabel", {
