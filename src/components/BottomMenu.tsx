@@ -73,7 +73,7 @@ function BottomMenu({ open }: BottomMenuProps) {
       borderTopColor={borderColor}
       px={4}
       w="100dvw"
-      h={BOTTOM_MENU_HEIGHT}
+      h={`${BOTTOM_MENU_HEIGHT}px`}
       justifyContent={{ base: "space-around", md: "center" }}
       aria-label={t("bottomMenu.ariaLabel")}
     >
