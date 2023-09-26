@@ -53,7 +53,7 @@ function ProjectPage({ projectId }: ProjectPageProps) {
   useEffect(() => {
     setViewingProjectId(projectId);
     return () => setViewingProjectId(null);
-  }, [projectId]);
+  }, [projectId, setViewingProjectId]);
 
   useEffect(() => {
     if (!viewingProjectId) return;

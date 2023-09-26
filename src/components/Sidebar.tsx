@@ -38,7 +38,7 @@ function Sidebar(_props: any, ref: ForwardedRef<HTMLDivElement>) {
     return () => {
       router.events.off("routeChangeComplete", closeMenu);
     };
-  }, [router]);
+  }, [router, setSidebarOpen]);
 
   return (
     <Surface
