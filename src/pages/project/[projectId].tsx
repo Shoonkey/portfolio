@@ -20,7 +20,11 @@ interface AppSetupProps {
   theme: "dark" | "light";
 }
 
-type AppSetupFunction = (props: AppSetupProps) => void;
+interface AppRoot {
+  unmount: () => void;
+}
+
+type AppSetupFunction = (props: AppSetupProps) => AppRoot;
 
 export const getStaticPaths = (() => {
   return {
@@ -54,18 +58,28 @@ function ProjectPage({ projectId }: ProjectPageProps) {
   useEffect(() => {
     if (!viewingProjectId) return;
 
+    let root: AppRoot;
+
     (async () => {
       const setupApp: AppSetupFunction = (
         await import(`@/../projects/${viewingProjectId}/src/setup`)
       ).default;
 
-      setupApp({
+      root = setupApp({
         containerId: "subapp-root",
         isSubapp: true,
         theme: colorMode,
         language: i18n.language
       });
     })();
+
+    return () => {
+      // This triggers a warning about synchronous unmounting during React rendering
+      // but is the only solution to properly re-rendering the app after first visit to the 
+      // page and I aven't found a React API alternative that does it asynchronously
+      // so I'm keeping it!
+      root.unmount();
+    }
   }, [viewingProjectId, i18n.language, colorMode]);
 
   return (
