@@ -1,7 +1,8 @@
-import { Image, ImageProps, useColorMode } from "@chakra-ui/react";
-import { TechLogoProps } from "../TechLogo";
+import { Image, useColorMode } from "@chakra-ui/react";
 
-function NextLogo({ sizeBehavior, ...props }: TechLogoProps & ImageProps) {
+import { TechLogoInstanceProps } from "@/shared/techs";
+
+function NextLogo({ sizeBehavior, ...props }: TechLogoInstanceProps) {
   const { colorMode } = useColorMode();
 
   return (

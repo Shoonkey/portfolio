@@ -1,7 +1,8 @@
-import { Image, ImageProps } from "@chakra-ui/react";
-import { TechLogoProps } from "../TechLogo";
+import { Image } from "@chakra-ui/react";
 
-function ViteLogo({ sizeBehavior, ...props }: TechLogoProps & ImageProps) {
+import { TechLogoInstanceProps } from "@/shared/techs";
+
+function ViteLogo({ sizeBehavior, ...props }: TechLogoInstanceProps) {
   return (
     <Image
       src="/vite-logo.svg"

@@ -4,11 +4,14 @@ import NextLogo from "@/components/tech-logos/NextLogo";
 import NodeLogo from "@/components/tech-logos/NodeLogo";
 import ReactLogo from "@/components/tech-logos/ReactLogo"
 import ViteLogo from "@/components/tech-logos/ViteLogo";
+import { TechLogoProps } from "@/components/TechLogo";
+
+export type TechLogoInstanceProps = Omit<TechLogoProps, "tagName"> & ImageProps;
 
 export interface ProjectTech {
   name: string;
   tag: string;
-  component: (props: ImageProps) => JSX.Element
+  component: (props: TechLogoInstanceProps) => JSX.Element
 }
 
 const techs: ProjectTech[] = [

@@ -1,7 +1,8 @@
-import { Image, ImageProps } from "@chakra-ui/react";
-import { TechLogoProps } from "../TechLogo";
+import { Image } from "@chakra-ui/react";
 
-function NodeLogo({ sizeBehavior, ...props }: TechLogoProps & ImageProps) {
+import { TechLogoInstanceProps } from "@/shared/techs";
+
+function NodeLogo({ sizeBehavior, ...props }: TechLogoInstanceProps) {
   return (
     <Image
       src="/node-logo.svg"
