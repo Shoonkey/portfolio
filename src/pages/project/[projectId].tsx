@@ -55,8 +55,8 @@ function ProjectPage({ projectId }: ProjectPageProps) {
 
   const metadata = useMemo<PageMetadata>(
     () => ({
-      title: t(`projects.${viewingProjectId}.meta.title`),
-      description: t(`projects.${viewingProjectId}.meta.description`),
+      title: t(`projects.${viewingProjectId}.name`),
+      description: t(`projects.${viewingProjectId}.metaDescription`),
       imgSrc: currentProject.imgSrc,
       imgAlt: currentProject.imgAlt
     }),
