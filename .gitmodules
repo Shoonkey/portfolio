@@ -1,3 +1,6 @@
 [submodule "projects/pomodoro-timer"]
 	path = projects/pomodoro-timer
 	url = https://github.com/Shoonkey/pomodoro-timer
+[submodule "projects/music-theory-study"]
+	path = projects/music-theory-study
+	url = https://github.com/Shoonkey/music-theory-study.git

@@ -2,7 +2,7 @@
 
 This is my portfolio!
 
-It is my second take on a portfolio design with new takes on the projects as well!
+It is my second take on a portfolio design, and it's built using NextJS, ChakraUI and Phosphor Icons.
 
 ## Projects
 
@@ -29,8 +29,10 @@ To properly clone it containing its submodules you'll need to run `git clone --r
 ### Updating submodules
 To properly update submodules to their latest branch, you can run `git submodule update --remote`.
 
-### Setup caveat
+### Setup caveats
 
-To prevent dependency redundancy and keep project files separate, the subapps are installed as a folder (see npm [install](https://docs.npmjs.com/cli/v9/commands/npm-install) docs, under `npm install <folder>`). Every time a subapp is installed for the first time or re-installed to update its dependencies, NPM is gonna create a new entry in the main `package.json` with an arbitrary name (usually `app`).
+> Will be looking into alternatives to Next 'cause it's locking me into workarounds.
 
-If it's a new subapp, rename it to fit what it is, and if it's not new, remove the unnecessary added line and keep the old one. Run `npm i` in the project root to fix NPM's lockfile naming of the subapp folder dependencies.
+- To prevent *dependency redundancy* and keep project files separate, the subapps are installed as a folder (see npm [install](https://docs.npmjs.com/cli/v9/commands/npm-install) docs, under `npm install <folder>`). Every time a subapp is installed for the first time or re-installed to update its dependencies, NPM is gonna create a new entry in the main `package.json` with an arbitrary name (usually `app`). If it's a new subapp, rename it to fit what it is, and if it's not new, remove the unnecessary added line and keep the old one. Run `npm i` in the project root to fix NPM's lockfile naming of the subapp folder dependencies.
+
+- As NextJS strictly serves files from its `public/` folder and does not support importing files on the JS bundle out of the box, subapp's project files must be included on its `public/` folder separately from the submodules.

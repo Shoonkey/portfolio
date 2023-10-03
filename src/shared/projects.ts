@@ -16,7 +16,10 @@ export interface Project {
   beingBuilt?: boolean;
 }
 
-export const projectsMetadata: Omit<Project, "name" | "imgAlt" | "metaDescription">[] = [
+export const projectsMetadata: Omit<
+  Project,
+  "name" | "imgAlt" | "metaDescription"
+>[] = [
   {
     id: "portfolio-v2",
     type: "website",
@@ -25,7 +28,7 @@ export const projectsMetadata: Omit<Project, "name" | "imgAlt" | "metaDescriptio
     imgSrc: "/portfolio-v2.png",
     tags: ["react", "node", "next"],
     isMeta: true,
-    isSolo: true
+    isSolo: true,
   },
   {
     id: "pomodoro-timer",
@@ -34,17 +37,7 @@ export const projectsMetadata: Omit<Project, "name" | "imgAlt" | "metaDescriptio
     githubLink: "https://github.com/Shoonkey/pomodoro-timer",
     imgSrc: "/pomodoro-timer.png",
     tags: ["react", "node", "vite"],
-    isSolo: true
-  },
-  {
-    id: "flash-cards",
-    type: "website",
-    href: "/project/flash-cards",
-    githubLink: "https://github.com/Shoonkey/flash-cards",
-    imgSrc: "/flash-cards.png",
-    tags: ["react", "node", "vite"],
     isSolo: true,
-    beingBuilt: true
   },
   {
     id: "music-theory-study",
@@ -54,8 +47,17 @@ export const projectsMetadata: Omit<Project, "name" | "imgAlt" | "metaDescriptio
     imgSrc: "/music-theory-quiz.png",
     tags: ["react", "node", "vite"],
     isSolo: true,
-    beingBuilt: true
-  }
+  },
+  {
+    id: "flash-cards",
+    type: "website",
+    href: "/project/flash-cards",
+    githubLink: "https://github.com/Shoonkey/flash-cards",
+    imgSrc: "/flash-cards.png",
+    tags: ["react", "node", "vite"],
+    isSolo: true,
+    beingBuilt: true,
+  },
 ];
 
 const useProjects = () => {
@@ -67,7 +69,7 @@ const useProjects = () => {
         ...metadata,
         name: t(`projects.${metadata.id}.name`),
         imgAlt: t(`projects.${metadata.id}.imgAlt`),
-        metaDescription: t(`projects.${metadata.id}.metaDescription`)
+        metaDescription: t(`projects.${metadata.id}.metaDescription`),
       })),
     [t]
   );
