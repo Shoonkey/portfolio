@@ -87,6 +87,9 @@ function ProjectPage({ projectId }: ProjectPageProps) {
     })();
 
     return () => {
+      if (!root)
+        return;
+      
       // This triggers a warning about synchronous unmounting during React rendering
       // but is the only solution to properly re-rendering the app after first visit to the
       // page and I aven't found a React API alternative that does it asynchronously
