@@ -1,5 +1,5 @@
 import {
-  Box,
+  Center,
   Flex,
   Heading,
   Image,
@@ -88,9 +88,9 @@ function ProjectMain({ project }: Pick<ProjectCardProps, "project">) {
   }
 
   return (
-    <Box p={8} pb={0} flexGrow={1} position="relative">
+    <Center p={8} pb={0} flexGrow={1} position="relative">
       {content}
-    </Box>
+    </Center>
   );
 }
 
