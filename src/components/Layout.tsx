@@ -9,6 +9,7 @@ import BottomMenu from "./BottomMenu";
 import OpenSidebarButton from "./OpenSidebarButton";
 import Sidebar from "./Sidebar";
 import useThemeColor from "@/hooks/useThemeColor";
+import Header from "./Header";
 
 interface LayoutProps {
   children: ReactNode;
@@ -17,9 +18,7 @@ interface LayoutProps {
 function Layout({ children }: LayoutProps) {
   const mainContentRef = useRef<HTMLDivElement>(null);
   const sidebarRef = useRef<HTMLDivElement>(null);
-  const { t } = useTranslation();
-  
-  const highlightColor = useThemeColor("primary.500");
+
   const { sidebarOpen, viewingProjectId } = useGlobalSettings();
 
   useEffect(() => {
@@ -45,32 +44,7 @@ function Layout({ children }: LayoutProps) {
             viewingProjectId == null ? BOTTOM_MENU_HEIGHT + 16 + "px" : "16px"
           }
         >
-          <Flex
-            justifyContent="end"
-            alignItems="center"
-            gap={2}
-            h="48px"
-            flexShrink={0}
-            pb={4}
-          >
-            {viewingProjectId != null && (
-              <Flex flexDir="column" alignItems="end">
-                <Text>
-                  {t("pages.singleProject.viewing")}{" "}
-                  <strong>{t(`projects.${viewingProjectId}.name`)}</strong>
-                </Text>
-                <Link href="/projects">
-                  <Text
-                    textDecoration="underline"
-                    color={highlightColor}
-                  >
-                    {t("pages.singleProject.goBackToProjects")}
-                  </Text>
-                </Link>
-              </Flex>
-            )}
-            {!sidebarOpen && <OpenSidebarButton />}
-          </Flex>
+          <Header />
           {children}
           {viewingProjectId == null && <BottomMenu open={!sidebarOpen} />}
         </Flex>
