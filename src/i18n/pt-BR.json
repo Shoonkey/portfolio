@@ -64,6 +64,11 @@
       "whoAmI": "Me chamo <0>{{name}}</0>.",
       "briefIntroduction": "Sou um <0>desenvolvedor de software</0> com cerca de 3 anos de experiência. Já trabalhei com Node, React, Vue e Express.",
       "ctaButton": "Me mostre os projetos",
+      "curriculum": {
+        "label": "Curriculum vitae",
+        "selectLanguage": "Selecionar linguagem do currículo",
+        "download": "Baixar"
+      },
       "introduction": "<0>Comecei a aprender a programar por volta de 2013, aprendendo Javascript com ProcessingJS (uma biblioteca gráfica), e C básico pra programação competitiva. Desde então eu mudei principalmente pra C++ em programação competitiva, e Typescript com Node e React pra desenvolvimento web</0><1>Sou apaixonado por desenvolvimento porque gosto de aprender e criar coisas. Traduzir ideias pra uma máquina de lógica doida de rápida e ver ela me entender? CARA. ONDE EU ASSINO?!</1>"
     },
     "projects": {

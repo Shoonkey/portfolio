@@ -17,6 +17,7 @@ import useThemeColor from "@/hooks/useThemeColor";
 import CustomTooltip from "./CustomTooltip";
 import OpenSidebarButton from "./OpenSidebarButton";
 import ViewingProjectText from "./ViewingProjectText";
+import LanguageSelect from "./LanguageSelect";
 
 function Header() {
   const { t, i18n } = useTranslation();
@@ -81,18 +82,12 @@ function Header() {
             </Text>
           </Center>
           <Center gridArea="2 / 2">
-            <Select
+            <LanguageSelect
+              language={i18n.language}
+              onChangeLanguage={(lang) => i18n.changeLanguage(lang)}
               mx="auto"
               gridArea="2 / 2"
-              value={i18n.language}
-              onChange={(e) => i18n.changeLanguage(e.target.value)}
-              borderColor={colorMode === "light" ? "#2b2b2b" : "#e2e2e2"}
-              _hover={{ borderColor: highlightColor }}
-            >
-              <option value="en-US">en-US</option>
-              <option value="pt-BR">pt-BR</option>
-              <option value="es-ES">es-ES</option>
-            </Select>
+            />
           </Center>
         </Grid>
         {!isSmallViewport && <ViewingProjectText />}

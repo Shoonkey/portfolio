@@ -1,11 +1,21 @@
-import { Box, Flex, Image, Button, Heading, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Image,
+  Button,
+  Heading,
+  Text,
+  Select,
+} from "@chakra-ui/react";
 import Link from "next/link";
 import { Trans, useTranslation } from "react-i18next";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 
 import Surface from "@/components/Surface";
 import Page, { PageMetadata } from "@/components/Page";
 import useThemeColor from "@/hooks/useThemeColor";
+import LanguageSelect from "@/components/LanguageSelect";
+import { DownloadSimple } from "@phosphor-icons/react";
 
 function Homepage() {
   const { t } = useTranslation();
@@ -16,12 +26,24 @@ function Homepage() {
   const imgHeight = "min(40vw, 300px)";
   const offset = `calc(${imgHeight} / 2)`;
 
-  const metadata = useMemo<PageMetadata>(() => ({
-    title: t("pages.home.meta.title"),
-    description: t("pages.home.meta.description"),
-    imgSrc: "",
-    imgAlt: ""
-  }), [t]);
+  const [cvLanguage, setCvLanguage] = useState("en-US");
+
+  const metadata = useMemo<PageMetadata>(
+    () => ({
+      title: t("pages.home.meta.title"),
+      description: t("pages.home.meta.description"),
+      imgSrc: "",
+      imgAlt: "",
+    }),
+    [t]
+  );
+
+  const downloadCV = (lang: string) => {
+    const anchor = document.createElement("a");
+    anchor.download = `Shoonkey_CV_${lang}.pdf`;
+    anchor.href = `/cv_${lang}.pdf`;
+    anchor.click();
+  };
 
   return (
     <Page metadata={metadata}>
@@ -62,7 +84,7 @@ function Homepage() {
                 </Trans>
               </Heading>
             </Flex>
-            <Flex textAlign="center" flexDir="column" my={6} gap={4}>
+            <Flex textAlign="center" flexDir="column" mb={6} gap={4}>
               <Heading as="h1" fontSize={24} lineHeight="36px">
                 <Trans i18nKey="pages.home.briefIntroduction">
                   <Text as="span" color={highlightColor} />
@@ -78,6 +100,23 @@ function Homepage() {
               >
                 {t("pages.home.ctaButton")}
               </Button>
+              <Flex justifyContent="center" alignItems="center" gap={2}>
+                <Text fontWeight="bold">{t("pages.home.curriculum.label")}</Text>
+                <LanguageSelect
+                  aria-label={t("pages.home.curriculum.selectLanguage")}
+                  language={cvLanguage}
+                  onChangeLanguage={(lang) => setCvLanguage(lang)}
+                />
+                <Button
+                  rightIcon={<DownloadSimple size={32} />}
+                  bg={highlightColor}
+                  _hover={{ bg: hoveredColor }}
+                  color="black"
+                  onClick={() => downloadCV(cvLanguage)}
+                >
+                  {t("pages.home.curriculum.download")}
+                </Button>
+              </Flex>
             </Flex>
             <Flex
               textAlign="justify"
