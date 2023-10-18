@@ -43,15 +43,25 @@
       "imgAlt": "Screenshot of Pomodoro timer app: a 20-minute timer besides a todo list",
       "metaDescription": "A minimalistic Pomodoro timer app where you can manage your tasks and pauses"
     },
-    "flash-cards" : {
+    "flash-cards": {
       "name": "Flash cards",
       "imgAlt": "Screenshot of the flash card app: there's a card centered and two cards barely appearing on either side of the screen",
       "metaDescription": "A flash card app built to help study and memorize cool stuff"
     },
-    "music-theory-study" : {
+    "music-theory-study": {
       "name": "Music theory study",
       "imgAlt": "Screenshot of one of the quizzes, showing a musical staff with a treble clef and 4/4 time signature, asking to place where the note E (mi) is",
       "metaDescription": "An app composed (pun intended) of information and quizzes on music theory"
+    },
+    "puban-website": {
+      "name": "Puban cipher (website)",
+      "imgAlt": "Screenshot of homepage of the website for Puban, showing Puban written in a gradient from lightblue to purple above two textboxes for translation",
+      "metaDescription": "Puban es una cifra inventada que utiliza Ubbi Dubbi y PigLatin para encriptar mensajes"
+    },
+    "puban-bot": {
+      "name": "Puban cipher (Discord bot)",
+      "imgAlt": "Screenshot of bot setup page for the Puban Discord bot, showing Puban written in a gradient from lightblue to purple, followed a bunch of by instructions",
+      "metaDescription": "Set up the Discord bot that encrypts and decrypts Puban, a made-up cipher"
     }
   },
   "pages": {

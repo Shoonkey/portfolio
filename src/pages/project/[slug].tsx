@@ -30,7 +30,7 @@ export const getStaticPaths = (() => {
   return {
     paths: projectsMetadata
       .filter((p) => !p.isMeta)
-      .map((p) => ({ params: { projectId: p.id } })),
+      .map((p) => ({ params: { slug: p.customName || p.id } })),
     fallback: false,
   };
 }) satisfies GetStaticPaths;
@@ -38,7 +38,9 @@ export const getStaticPaths = (() => {
 export const getStaticProps = (async ({ params }) => {
   return {
     props: {
-      projectId: params!.projectId as string,
+      projectId: projectsMetadata.find((p) =>
+        [p.customName, p.id].includes(params!.slug as string)
+      )!.id,
     },
   };
 }) satisfies GetStaticProps<ProjectPageProps>;
@@ -51,14 +53,17 @@ function ProjectPage({ projectId }: ProjectPageProps) {
   const { viewingProjectId, setViewingProjectId } = useGlobalSettings();
   const projects = useProjects();
 
-  const currentProject = useMemo(() => projects.find(p => p.id === projectId)!, [projectId, projects]);
+  const currentProject = useMemo(
+    () => projects.find((p) => p.id === projectId)!,
+    [projectId, projects]
+  );
 
   const metadata = useMemo<PageMetadata>(
     () => ({
       title: t(`projects.${viewingProjectId}.name`),
       description: t(`projects.${viewingProjectId}.metaDescription`),
       imgSrc: currentProject.imgSrc,
-      imgAlt: currentProject.imgAlt
+      imgAlt: currentProject.imgAlt,
     }),
     [t, viewingProjectId, currentProject]
   );
@@ -74,8 +79,10 @@ function ProjectPage({ projectId }: ProjectPageProps) {
     let root: AppRoot;
 
     (async () => {
+      const projectFolder = currentProject.customName || currentProject.id;
+
       const setupApp: AppSetupFunction = (
-        await import(`@/../projects/${viewingProjectId}/src/setup`)
+        await import(`@/../projects/${projectFolder}/src/setup`)
       ).default;
 
       root = setupApp({
@@ -87,16 +94,15 @@ function ProjectPage({ projectId }: ProjectPageProps) {
     })();
 
     return () => {
-      if (!root)
-        return;
-      
+      if (!root) return;
+
       // This triggers a warning about synchronous unmounting during React rendering
       // but is the only solution to properly re-rendering the app after first visit to the
       // page and I aven't found a React API alternative that does it asynchronously
       // so I'm keeping it!
       root.unmount();
     };
-  }, [viewingProjectId, i18n.language, colorMode]);
+  }, [currentProject, viewingProjectId, i18n.language, colorMode]);
 
   return (
     <Page metadata={metadata}>

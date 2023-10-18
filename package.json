@@ -20,6 +20,7 @@
     "music-theory-study-subapp": "file:projects/music-theory-study",
     "next": "^13.5.4",
     "pomodoro-timer-subapp": "file:projects/pomodoro-timer",
+    "puban-website-subapp": "file:projects/puban",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-i18next": "^13.2.2",

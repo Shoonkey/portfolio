@@ -11,6 +11,7 @@ export interface Project {
   imgAlt: string;
   metaDescription: string;
   tags: string[];
+  customName?: string;
   isMeta?: boolean;
   isSolo?: boolean;
   beingBuilt?: boolean;
@@ -46,6 +47,26 @@ export const projectsMetadata: Omit<
     githubLink: "https://github.com/Shoonkey/flash-cards",
     imgSrc: "/music-theory-quiz.png",
     tags: ["react", "node", "vite"],
+    isSolo: true,
+  },
+  {
+    id: "puban-website",
+    customName: "puban",
+    type: "website",
+    href: "/project/puban#/",
+    githubLink: "https://github.com/Shoonkey/flash-cards",
+    imgSrc: "/puban-website.png",
+    tags: ["react", "node", "vite"],
+    isSolo: true,
+  },
+  {
+    id: "puban-bot",
+    customName: "puban",
+    type: "website",
+    href: "/project/puban#/bot",
+    githubLink: "https://github.com/Shoonkey/flash-cards",
+    imgSrc: "/puban-bot.png",
+    tags: ["node", "discordjs"],
     isSolo: true,
   },
   {

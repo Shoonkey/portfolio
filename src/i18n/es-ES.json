@@ -52,6 +52,16 @@
       "name": "Estudio de teoría musical",
       "imgAlt": "Captura de pantalla de un de los quizzes, mostrando un pentagrama musical con una clave de sol y un compás de 4/4, pidiendo para indicar dónde es la nota E (mi)",
       "metaDescription": "Un app compuesto de informaciones y quizzes de teoría musical"
+    },
+    "puban-website": {
+      "name": "Cifra Puban (sitio web)",
+      "imgAlt": "Captura de pantalla de la página principal del sitio web de Puban, mostrando Puban escrito en un gradiente que va de azul claro a morado, encima de dos cajas de texto de traducción",
+      "metaDescription": "Puban es una cifra inventada que utiliza Ubbi Dubbi y PigLatin para encriptar mensajes"
+    },
+    "puban-bot": {
+      "name": "Cifra Puban (bot de Discord)",
+      "imgAlt": "Captura de pantalla de la página de configuración del bot de Discord de Puban, mostrando Puban escrito en un gradiente que va de azul claro a morado, seguido de algunas instrucciones",
+      "metaDescription": "Configure el bot de Discord que encripta y decripta Puban, una cifra inventada"
     }
   },
   "pages": {

@@ -4,3 +4,6 @@
 [submodule "projects/music-theory-study"]
 	path = projects/music-theory-study
 	url = https://github.com/Shoonkey/music-theory-study.git
+[submodule "projects/puban"]
+	path = projects/puban
+	url = https://github.com/Shoonkey/puban-website.git

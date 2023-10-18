@@ -43,15 +43,25 @@
       "imgAlt": "Captura de tela do app: un cronômetro de 20 minutos timer ao lado de uma lista de tarefas",
       "metaDescription": "Um app de cronômetro Pomodoro minimalista em que você pode gerenciar suas tarefas e pausas"
     },
-    "flash-cards" : {
+    "flash-cards": {
       "name": "Cartões de estudo",
       "imgAlt": "Captura de tela do app de cartões de estudo: há um cartão no centro e dois cartões aparecendo pouco em cada lado da tela",
       "metaDescription": "Um app de cartões de estudo para ajudar a estudar e memorizar coisas legais"
     },
-    "music-theory-study" : {
+    "music-theory-study": {
       "name": "Estudo de teoria musical",
       "imgAlt": "Captura de tela de um dos quizzes, mostrando uma pauta musical com uma clave de sol e uma fórmula de compasso 4/4, pedindo para indicar onde fica a nota E (mi)",
       "metaDescription": "Um app composto de informações e quizzes de teoria musical"
+    },
+    "puban-website": {
+      "name": "Cifra Puban (site)",
+      "imgAlt": "Captura de tela da página inicial do site da cifra Puban, com Puban escrito em um gradiente de azul claro para roxo, acima de duas caixas de texto de tradução",
+      "metaDescription": "Puban é uma cifra inventada que usa Ubbi Dubbi e PigLatin para encriptar mensagens"
+    },
+    "puban-bot": {
+      "name": "Cifra Puban (bot do Discord)",
+      "imgAlt": "Captura de tela da página de configuração do bot do Discord de Puban, com Puban escrito em um gradiente de azul claro para roxo, seguido de algumas instruções",
+      "metaDescription": "Configure o bot do Discord que encripta e decripta Puban"
     }
   },
   "pages": {

@@ -8,7 +8,7 @@ function NextLogo({ sizeBehavior, ...props }: TechLogoInstanceProps) {
   return (
     <Image
       src="/next-logo.svg"
-      alt="NextJS logo: NextJS written aligned in height with N and X sticking out in th edges"
+      alt="NextJS logo: NextJS written aligned in height with N and X sticking out in the edges"
       w={sizeBehavior === "responsive" ? { base: "32px", md: "64px" } : "64px"}
       filter={`invert(${colorMode === "dark" ? 0 : 1})`}
       {...props}
