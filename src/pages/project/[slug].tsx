@@ -74,7 +74,7 @@ function ProjectPage({ projectId }: ProjectPageProps) {
       imgSrc: currentProject.imgSrc,
       imgAlt: currentProject.imgAlt,
     }),
-    [t, currentProject]
+    [t, projectId, currentProject]
   );
 
   useEffect(() => {
