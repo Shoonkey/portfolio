@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { FunctionComponent, lazy, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useColorMode } from "@chakra-ui/react";
@@ -13,18 +13,11 @@ interface ProjectPageProps {
   projectId: string;
 }
 
-interface AppSetupProps {
-  containerId: string;
+interface SubappProps {
   isSubapp?: boolean;
   language: string;
   theme: "dark" | "light";
 }
-
-interface AppRoot {
-  unmount: () => void;
-}
-
-type AppSetupFunction = (props: AppSetupProps) => AppRoot;
 
 export const getStaticPaths = (() => {
   return {
@@ -53,6 +46,9 @@ function ProjectPage({ projectId }: ProjectPageProps) {
   const { viewingProjectId, setViewingProjectId } = useGlobalSettings();
   const projects = useProjects();
 
+  const [SubappComponent, setSubappComponent] =
+    useState<FunctionComponent<SubappProps> | null>(null);
+
   const currentProject = useMemo(
     () => projects.find((p) => p.id === projectId)!,
     [projectId, projects]
@@ -76,44 +72,34 @@ function ProjectPage({ projectId }: ProjectPageProps) {
   useEffect(() => {
     if (!viewingProjectId) return;
 
-    let root: AppRoot;
-
     (async () => {
       const projectFolder = currentProject.customName || currentProject.id;
 
-      const setupApp: AppSetupFunction = (
-        await import(`@/../projects/${projectFolder}/src/setup`)
-      ).default;
+      const app: FunctionComponent = lazy(
+        () => import(`@/../projects/${projectFolder}/src/App`)
+      );
 
-      root = setupApp({
-        containerId: "subapp-root",
-        isSubapp: true,
-        theme: colorMode,
-        language: i18n.language,
-      });
+      setSubappComponent(app);
     })();
-
-    return () => {
-      if (!root) return;
-
-      // This triggers a warning about synchronous unmounting during React rendering
-      // but is the only solution to properly re-rendering the app after first visit to the
-      // page and I aven't found a React API alternative that does it asynchronously
-      // so I'm keeping it!
-      root.unmount();
-    };
   }, [currentProject, viewingProjectId, i18n.language, colorMode]);
 
   return (
     <Page metadata={metadata}>
-      <Surface
-        flexGrow={1}
-        p={2}
-        borderStyle="solid"
-        borderWidth="1px"
-        borderColor={borderColor}
-        id="subapp-root"
-      />
+      {SubappComponent && (
+        <Surface
+          flexGrow={1}
+          p={2}
+          borderStyle="solid"
+          borderWidth="1px"
+          borderColor={borderColor}
+        >
+          <SubappComponent
+            isSubapp
+            language={i18n.language}
+            theme={colorMode}
+          />
+        </Surface>
+      )}
     </Page>
   );
 }
