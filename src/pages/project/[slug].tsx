@@ -1,7 +1,14 @@
-import { FunctionComponent, lazy, useEffect, useMemo, useState } from "react";
+import {
+  FunctionComponent,
+  Suspense,
+  lazy,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { useTranslation } from "react-i18next";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { useColorMode } from "@chakra-ui/react";
+import { Center, Spinner, useColorMode } from "@chakra-ui/react";
 
 import Page, { PageMetadata } from "@/components/Page";
 import Surface from "@/components/Surface";
@@ -38,6 +45,12 @@ export const getStaticProps = (async ({ params }) => {
   };
 }) satisfies GetStaticProps<ProjectPageProps>;
 
+const Loading = () => (
+  <Center flexGrow={1}>
+    <Spinner size="xl" />
+  </Center>
+);
+
 function ProjectPage({ projectId }: ProjectPageProps) {
   const { t, i18n } = useTranslation();
   const { colorMode } = useColorMode();
@@ -56,12 +69,12 @@ function ProjectPage({ projectId }: ProjectPageProps) {
 
   const metadata = useMemo<PageMetadata>(
     () => ({
-      title: t(`projects.${viewingProjectId}.name`),
-      description: t(`projects.${viewingProjectId}.metaDescription`),
+      title: t(`projects.${projectId}.name`),
+      description: t(`projects.${projectId}.metaDescription`),
       imgSrc: currentProject.imgSrc,
       imgAlt: currentProject.imgAlt,
     }),
-    [t, viewingProjectId, currentProject]
+    [t, currentProject]
   );
 
   useEffect(() => {
@@ -85,21 +98,26 @@ function ProjectPage({ projectId }: ProjectPageProps) {
 
   return (
     <Page metadata={metadata}>
-      {SubappComponent && (
-        <Surface
-          flexGrow={1}
-          p={2}
-          borderStyle="solid"
-          borderWidth="1px"
-          borderColor={borderColor}
-        >
-          <SubappComponent
-            isSubapp
-            language={i18n.language}
-            theme={colorMode}
-          />
-        </Surface>
-      )}
+      <Surface
+        display="flex"
+        flexGrow={1}
+        p={2}
+        borderStyle="solid"
+        borderWidth="1px"
+        borderColor={borderColor}
+      >
+        {SubappComponent ? (
+          <Suspense fallback={<Loading />}>
+            <SubappComponent
+              isSubapp
+              language={i18n.language}
+              theme={colorMode}
+            />
+          </Suspense>
+        ) : (
+          <Loading />
+        )}
+      </Surface>
     </Page>
   );
 }
