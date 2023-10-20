@@ -94,7 +94,7 @@ function ProjectPage({ projectId }: ProjectPageProps) {
 
       setSubappComponent(app);
     })();
-  }, [currentProject, viewingProjectId, i18n.language, colorMode]);
+  }, [currentProject, viewingProjectId]);
 
   return (
     <Page metadata={metadata}>
