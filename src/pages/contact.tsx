@@ -123,7 +123,7 @@ function ContactPage() {
                     color={standardHighlightColor}
                   >
                     <Link
-                      href="https://twitter.com/shooonkey"
+                      href="https://www.linkedin.com/in/shoonkey/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
