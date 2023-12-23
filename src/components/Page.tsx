@@ -21,9 +21,9 @@ function Page({ metadata: metadataProp, children }: PageProps) {
 
   const metadata: PageMetadata = useMemo(
     () => ({
-      ...metadataProp,
       imgSrc: DEFAULT_PREVIEW_IMAGE.src,
-      imgAlt: DEFAULT_PREVIEW_IMAGE.alt
+      imgAlt: DEFAULT_PREVIEW_IMAGE.alt,
+      ...metadataProp,
     }), 
     [metadataProp]
   );
@@ -53,7 +53,7 @@ function Page({ metadata: metadataProp, children }: PageProps) {
         <meta name="twitter:title" content={computedTitle} />
         <meta name="twitter:description" content={metadata.description} />
         <meta name="twitter:url" content="https://shoonkey.com" />
-        <meta name="twitter:image:src" content={`https://shoonkey.com${metadata.imgSrc}`} />
+        <meta name="twitter:image" content={`https://shoonkey.com${metadata.imgSrc}`} />
         <meta name="twitter:image:alt" content={metadata.imgAlt} />
         <meta name="twitter:creator" content="@shooonkey" />
         <meta name="twitter:site" content="@shooonkey" />
