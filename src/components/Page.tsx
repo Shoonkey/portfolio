@@ -2,11 +2,13 @@ import Head from "next/head";
 import { ReactNode, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
+import { DEFAULT_PREVIEW_IMAGE } from "@/shared/constants";
+
 export interface PageMetadata {
   title: string;
   description: string;
-  imgSrc: string;
-  imgAlt: string;
+  imgSrc?: string;
+  imgAlt?: string;
 }
 
 interface PageProps {
@@ -14,8 +16,17 @@ interface PageProps {
   children: ReactNode;
 }
 
-function Page({ metadata, children }: PageProps) {
+function Page({ metadata: metadataProp, children }: PageProps) {
   const { t } = useTranslation();
+
+  const metadata: PageMetadata = useMemo(
+    () => ({
+      ...metadataProp,
+      imgSrc: DEFAULT_PREVIEW_IMAGE.src,
+      imgAlt: DEFAULT_PREVIEW_IMAGE.alt
+    }), 
+    [metadataProp]
+  );
 
   const computedTitle = useMemo(
     () => `${metadata.title} | ${t("globalAppTitle")}`,
@@ -46,6 +57,9 @@ function Page({ metadata, children }: PageProps) {
         <meta name="twitter:image:alt" content={metadata.imgAlt} />
         <meta name="twitter:creator" content="@shooonkey" />
         <meta name="twitter:site" content="@shooonkey" />
+
+        {/* Favicon */}
+        <link rel="icon" href="favicon.svg" type="image/svg+xml" />
       </Head>
       {children}
     </>

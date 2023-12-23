@@ -21,9 +21,7 @@ function ContactPage() {
   const metadata = useMemo<PageMetadata>(
     () => ({
       title: t("pages.contact.meta.title"),
-      description: t("pages.contact.meta.description"),
-      imgSrc: "",
-      imgAlt: ""
+      description: t("pages.contact.meta.description")
     }),
     [t]
   );

@@ -31,9 +31,7 @@ function Homepage() {
   const metadata = useMemo<PageMetadata>(
     () => ({
       title: t("pages.home.meta.title"),
-      description: t("pages.home.meta.description"),
-      imgSrc: "",
-      imgAlt: "",
+      description: t("pages.home.meta.description")
     }),
     [t]
   );
