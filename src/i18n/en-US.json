@@ -56,7 +56,7 @@
     "puban-website": {
       "name": "Puban cipher (website)",
       "imgAlt": "Screenshot of homepage of the website for Puban, showing Puban written in a gradient from lightblue to purple above two textboxes for translation",
-      "metaDescription": "Puban es una cifra inventada que utiliza Ubbi Dubbi y PigLatin para encriptar mensajes"
+      "metaDescription": "Puban is a made-up cipher that uses Ubbi Dubbi and PigLatin to encrypt messages"
     },
     "puban-bot": {
       "name": "Puban cipher (Discord bot)",
